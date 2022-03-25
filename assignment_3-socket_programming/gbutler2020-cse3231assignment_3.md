@@ -6,7 +6,7 @@ The purpose of this assignment was to write a program that sends a UDP packet to
 
 ###### Code:
 `main.py`:
-```python
+```python{.line-numbers}
 import socket
 HOST = '34.74.19.25'
 PORT = 30315
@@ -28,6 +28,9 @@ main()
 </br>
 
 `terminal output`:
-```
-
+```sh{.line-numbers}
+cse3231assignments/assignment_3-socket_programming/src on  trunk via 🐍 v3.9.10
+❯ python main.py
+sent:  gbutler2020@my.fit.edu
+received: Welcome, gbutler2020@my.fit.edu
 ```
