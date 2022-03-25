@@ -17,9 +17,9 @@ email = 'gbutler2020@my.fit.edu'
 def main():
     soc = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     soc.sendto(email.encode(), SERVER_ADDR)
-    print('sent: ', email)
+    print(f'sent:{email}')
     data = soc.recvfrom(1024)
-    print('received: '+data[0].decode())
+    print(f'received:{data[0].decode()}')
 
 
 main()
@@ -29,8 +29,15 @@ main()
 
 `terminal output`:
 ```sh{.line-numbers}
-cse3231assignments/assignment_3-socket_programming/src on  trunk via 🐍 v3.9.10
+cse3231assignments/assignment_3-socket_programming/src on  trunk [!] via 🐍 v3.9.10
 ❯ python main.py
-sent:  gbutler2020@my.fit.edu
+sent: gbutler2020@my.fit.edu
 received: Welcome, gbutler2020@my.fit.edu
 ```
+</br>
+
+`screenshot`:
+
+![Screen Shot 2022-03-25 at 12.30.26 PM](/assets/Screen%20Shot%202022-03-25%20at%2012.30.26%20PM.png)
+
+It would seem that it worked!
