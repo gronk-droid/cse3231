@@ -20,7 +20,7 @@ def main():
     port = 23456
 
     original_html = get_html(host, port)
-    print('part 1\n' + original_html + '\n\n')  # part 1 done
+    print('part 1\n\n' + original_html + '\n\n')  # part 1 done
 
     # now to parse the other link
     link_regex = re.compile(r'HREF="(?:[^"]|"")*"')  # regex for the href
@@ -28,7 +28,7 @@ def main():
 
     embedded_link = f'{host}{str(href_str)[7:-1]}'  # pronto!
     new_html = get_html(str(embedded_link), port)
-    print('part 2 ' + new_html)
+    print('part 2\n\n' + new_html)
 
 
 main()
