@@ -8,7 +8,8 @@ Make a TCP connection to port **23456** of the server at http://0.cloud.chals.io
 Sent a properly formatted HTTP header (see the slides) to retrieve the default webpage at that location.
 Receive and display the text of the HTML document the server sends as a reply
 
-    If you receive nothing, an error message or an incomplete HTML document, your request may not have been formatted correctly
+>If you receive nothing, an error message or an incomplete HTML document,
+>your request may not have been formatted correctly
 
 ##### Part 2:
 The HTML document you received in Part 1 contains the URL for another webpage and your program must extract that URL and send a second request to the same web server to retrieve that new web page.
