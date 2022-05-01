@@ -263,6 +263,7 @@ IP Checksum Example:
 2. Add 16-bit values. Each carry-out produced is added to the LSb.
 3. Invert all bits to get one's complement.
 
+Header to check:
 <div class="center">
 
 $$
@@ -274,6 +275,8 @@ $$
 \end{aligned}
 $$
 </div>
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 Add 16-bit values 2 at a time and convert to one's complement:
 <div class="center">
