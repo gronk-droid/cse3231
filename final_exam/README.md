@@ -389,7 +389,7 @@ Used for connections between clients (browsers) and servers in the World Wide We
   - retaining state information was solved with variables in messages or <span class="textPink">web cookies</span> on client's host
 
 Messages:
-```
+```plain {.line-numbers}
 START_LINE <CRLF>
 MESSAGE_HEADER <CRLF>
 <CRLF>
@@ -458,4 +458,90 @@ History:
 - **Douglas Engelbart** demonstrated a user interface with different tools and documents in 1968
 - **Tim Berners-Lee** created a hypertext sharing system called the _World Wide Web_ in 1990
 
-### Headers
+<div style="page-break-after: always; break-after: page;"></div>
+
+##### HTTP Headers
+<div class="center">
+
+|                Function                |                                       Example Headers                                       |
+| -------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Browser capabilities (client → server) |            User-Agent, Accept, Accept-Charset, Accept-Encoding, Accept-Language             |
+|   Caching related (mixed directions)   |     If-Modified-Since, If-None-Match, Date, Last-Modified, Expires, Cache-Control, ETag     |
+|   Browser context (client → server)    |                            Cookie, Referrer, Authorization, Host                            |
+|   Content delivery (server → client)   | Content-Encoding, Content-Length, Content-Type, Content-Language, Content-Range, Set-Cookie |
+</div>
+
+##### HTTP Requests
+###### Methods
+<div class="center">
+
+| Operation |                 Description                 |
+| --------- | ------------------------------------------- |
+|  OPTIONS  | Request information about available options |
+|    GET    |          Retrieve document in URL           |
+|   HEAD    |   Retrieve metainfo about document in URL   |
+|   POST    |         Give information to server          |
+|    PUT    |          Store document under URL           |
+|  DELETE   |                 Delete URL                  |
+|   TRACE   |          Loopback request message           |
+|  CONNECT  |             For use by proxies              |
+</div>
+
+Example:
+```plain {.line-numbers}
+GET /download.html HTTP/1.1
+Host: www.ethereal.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1;
+en-US; rv:1.6) Gecko/20040113
+Accept:
+text/xml,application/xml,application/xhtml+xml,text/htm
+l;q=0.9,text/plain;q=0.8,image/png,image/jpeg,image/gif
+;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://www.ethereal.com/development.html
+```
+
+##### HTTP Response
+Steps server takes to serve pages:
+1. Accept TCP connection
+2. Receive page request and map it to requested resource
+  - May be static or requires execution of a program
+3. Send reply to client
+  - May include links to other resources that client's browser has to access
+4. Release idle TCP connections
+
+Responses begin with a `START_LINE`, just like requests. The line specifies:
+- The <span class="textPink">version of HTTP</span> being used
+- A <span class="textGreen">three digit code</span> indicating whether request was successful
+- A <span class="textTeal">text string</span> giving reason for response.
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+###### Response Codes:
+<div class="center">
+
+| Code  |   Meaning    |                        Examples                        |
+| ----- | ------------ | ------------------------------------------------------ |
+| `1XX` | Information  |        `100` = server agrees to handle request         |
+| `2XX` |   Success    | `200` = request succeeded; `204` = no content present  |
+| `3XX` | Redirection  |  `301` = page moved; `304` = cached page still valid   |
+| `4XX` | Client error |      `403` = forbidden page; `404` page not found      |
+| `5XX` | Server error | `500` = internal server error; `503` = try again later |
+</div>
+
+Example:
+```plain {.line-numbers}
+HTTP/1.1 200 OK
+Date: Thu, 13 May 2004 10:17:12 GMT
+Server: Apache
+Last-Modified: Tue, 20 Apr 2004 13:17:00 GMT ETag: "9a01a-4696-7e354b00"
+Accept-Ranges: bytes
+Content-Length: 18070
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=ISO-8859-1
+```
