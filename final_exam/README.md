@@ -120,18 +120,18 @@ Connection Management
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-### TCP Flow Control
+## TCP Flow Control
 
 TCP needs to control amount of data a sender transmits to avoid overwhelming the receiver.
 
 <div style="text-align: center;">
 
-##### Congestion Control vs Flow Control
+### Congestion Control vs Flow Control
 </div>
 
 <div class="leftColumn">
 
-##### Congestion Control
+#### Congestion Control
 - focuses on preventing too much data in <span class="textPink">network</span>.
 - uses Retransmission Timeout (RTO) and Round Trip Time (RTT)
   - RTT is different for each path a packet takes.
@@ -140,7 +140,7 @@ TCP needs to control amount of data a sender transmits to avoid overwhelming the
 
 <div class="rightColumn">
 
-##### Flow Control
+#### Flow Control
 - Tries to prevent senders from overrunning <span class="textPink">capacity of receivers</span>.
   - Can't prevent congestion at routers.
 - Uses sliding window to control traffic in transit.
@@ -162,31 +162,25 @@ TCP needs to control amount of data a sender transmits to avoid overwhelming the
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-#### TCP Congestion Control: Additive Increase and Multiplicative Decrease (AIMD)
+### TCP Congestion Control: Additive Increase and Multiplicative Decrease (AIMD)
 
 TCP Source sets the CongestionWindow based on level of congestion it _perceives_ in the network.
 - Involves <span class="textPink">decreasing</span> congestion window when congestion goes up and <span class="textGreen">increasing</span> the congestion window when level of congestion goes down.
 - This is called _<span class="textPink">Additive Increase / Multiplicative Decrease</span>_ (AIMD).
 
-<div class="leftColumn">
-
 #### Additive Increase
 - Every successful send from source that is a _CongestionWindow_'s worth of packets adds the equivalent of 1 to CongestionWindow.
   - Success is measured as one ACK per RTT.
 - Increase is slower than decrease and avoids too rapid an increase in transmission rate.
-</div>
 
-<div class="rightColumn">
-
-##### Multiplicative Decrease
+#### Multiplicative Decrease
 - Easier to understand in terms of packets, despite <span class="textPink">CongestionWindow</span> being measured in bytes.
   - _e.g.:_
     - CongestionWindow is 16 packets
     - If a loss is detected, CongestionWindow is set to 8.
     - Additional losses go → 4, 2, 1.
-</div>
 
-##### Slow Start
+#### Slow Start
 1. Source starts _CongestionWindow_ at one packet.
 2. Sends one packet.
 2. ACK arrives → _CongestionWindow_ += 1.
@@ -201,9 +195,9 @@ Trend: TCP effectively **doubles** every RTT.
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-#### TCP Timeout and RTT
+### TCP Timeout and RTT
 
-##### Timeout
+#### Timeout
 Timeout period must be long enough to allow longer paths. If a packet is lost, multiple packets can be sent out before timeout expires. Receiver can't ACK because missing packet caused a gap in _SequenceNum_. Sender can reach _CongestionWindow_ limit while waiting for timeout.
 
 **Fast Retransmission and _Duplicate Acknowledgements_**
@@ -222,7 +216,7 @@ Fast Recovery
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-##### Round Trip Time (RTT)
+#### Round Trip Time (RTT)
 Retransmission TimeOut (RTO) is based on <span class="textPink">Round Trip Time</span> (RTT) for a given connection.
 - At connection, sender and receiver determine RTT and sender uses that for RTO.
 - Sender calulates an average RTT to deal with delays.
@@ -293,7 +287,7 @@ $$
 +\ &0111\ 0001\ 0010\ 1010 && third\ val\\
 \overline{\ \ }&\overline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
 0\ &1010\ 0011\ 1110\ 1001 && no\ carry-out\\
-+\ &1000\ 0001\ 1011\ 0101 && fourth val\\
++\ &1000\ 0001\ 1011\ 0101 && fourth\ val\\
 \overline{\ \ }&\overline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
 1\ &0010\ 0101\ 1001\ 1110 && carry-out\\
 +\ &0000\ 0000\ 0000\ 0001 && add\ to\ LSb\\
@@ -310,3 +304,158 @@ Thus, the 16 bit checksum is `1101 1010 0110 0000`.
 <div style="page-break-after: always; break-after: page;"></div>
 
 ## Applications
+
+Application layer interfaces with transport layer, isolating applications from the details of packet delivery. Applications can use either UDP or TCP. Some use UDP but add features like acknowledgements on their own to get reliable delivery without TCP's overhead.
+
+### Protocols
+
+Usually, an application that supports interaction and data transfer have a _protocol_ for communication between nodes. One may be a _server_, collecting and delivering data, while another may be a client, requesting and providing data. Application Protocols describe how endpoints will interact to accomplish tasks.
+
+#### Internet RFC (Request For Comment)
+A set of application protocols that standardize actions across vendors. Examples include:
+- Simple Mail Transfer Protocol (SMTP) _<span class="textPink">RFC 5321</span>_
+- Hypertext Transfer Protocol (HTTP) _<span class="textPink">RFC 2616/7540</span>_
+- File Transfer Protocol (FTP) _<span class="textPink">RFC 959</span>_
+
+Clear application protocols allow developers to create servers and clients that interact in established and predictable ways.
+- Some inconsistencies happen when features are added that are <span class="textPink">not part of the protocol</span>.
+
+##### Port Numbers
+Servers typically listen on well known ports for connections. A range of UDP and TCP ports are assigned to specific protocols, while others are not reserved.
+- <ins>Ports 0-1023</ins> are reserved by the <span class="textPink">Internet Assigned Numbers Authority</span> (IANA).
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+Common ports and their services:
+<div class="center">
+
+|            Service             |    Port    |
+|:------------------------------:|:----------:|
+|              SSH               |     22     |
+|              HTTP              |     80     |
+|  NTP (Network Time Protocol)   |    123     |
+|          IMAP (email)          | 143 or 220 |
+| LDAP (authentication protocol) |    289     |
+|     HTTPS (using TLS/SSL)      |    443     |
+</div>
+
+#### Request/Reply Protocols
+Messages are transmitted by client and server to manage and exchange data. Often consist of text commands.
+- _<span class="textPink">Stateful</span>_ protocols require client and server to keep track of current state of exchange.
+- _<span class="textPink">Stateless</span>_ protocols might have a server not keep a record of exchanges and close connection after each message.
+
+#### Publish-Subscribe Protocol (PubSub)
+- **Publishers** make data available for _subscribers_ who register to receive types of messages.
+  - _Loosely coupled_ to subscribers and produce whether or not it is used.
+  - Has better scalability because publishers don't manage connections.
+
+Examples:
+- Apache Kafka
+- Google Cloud Pub/Sub
+- Data Distribution Service (DDS)
+
+#### Message Queueing
+Similar to PubSub, these protocols don't require servers to wait for a client to request. Important aspects include:
+- A _<span class="textPink">queue manager</span>_ is implemented and announced to users.
+- Applications _register_ to be notified when messages arrive, and then can download those when ready.
+- Applications can add messages to a queue.
+- Queueing _decouples_ senders and receivers, so senders don't wait before they add to the queue.
+
+Examples:
+- Apache ActiveMQ
+- Microsoft Message Queueing
+- Java Message Service
+
+#### Peer to Peer
+Each node can exchange messages with any other node.
+- a node can be a client **and** a server
+- data is _decentralized_ and passed between peers
+- not all nodes have same capabilities, so some may perform special tasks to help other nodes
+- peer networks can be _structured_ with set topology or _unstructured_ and allow rapid changes to adapt
+
+Examples:
+- Bitcoin and other Cryptocurrency
+- BitTorrent
+- Gnutella
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+#### HyperText Transfer Protocol (HTTP)
+Used for connections between clients (browsers) and servers in the World Wide Web. Provides request/response interaction between server and multiple clients.
+- Web browser acts as _<span class="textPink">User Agent</span>_
+- Communications are based on TCP
+- _Stateless_ protocol
+  - <span class="textPink">keep-alive</span> feature was added in v1.1
+  - retaining state information was solved with variables in messages or <span class="textPink">web cookies</span> on client's host
+
+Messages:
+```
+START_LINE <CRLF>
+MESSAGE_HEADER <CRLF>
+<CRLF>
+MESSAGE_BODY <CRLF>
+```
+`START_LINE` indicates request or response message. Each section ends with CRLF.
+
+##### Cookies
+Coockies are used to support _stateful_ client/server interactions
+- server sends cookies (state) with response
+- client stores them locally
+  - client sends cookie with a new request to the server
+- server extracts state information from cookie
+
+Examples:
+<div class="center">
+
+|     Domain      | Path |           Content            |    Expires     | Secure |
+| --------------- | ---- | ---------------------------- | -------------- | ------ |
+| toms-casino.com |  /   |     CustomerID=297793521     | 15-10-10 17:00 |  Yes   |
+| jills-store.com |  /   | Cart=1-00501;1-07031;2-13721 | 11-1-11 14:22  |   No   |
+|   aportal.com   |  /   | Prefs=Stk:CSCO+ORCL;Spt:Jets | 31-13-20 23:59 |   No   |
+|   sneaky.com    |  /   |      UserID=4627239101       | 31-12-19 23:59 |   No   |
+</div>
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+##### URLs
+Identification of servers and hyperlinks is based on _<span class="textPink">Uniform Resource Locators</span>_ (URLs), which contain information to access a target server and document on that server.
+- HTTP headers are text based and use standard header fields to manage connections and data exchange
+- HTTP connections are not encrypted, but _<span class="textPink">HTTPS</span>_ creates an encrypted connection before data is exchanged
+  - protects data, but does not authenticate users
+
+Example:
+```mermaid
+flowchart LR
+    subgraph url [URL]
+        direction LR
+        subgraph protocol [Protocol &nbsp]
+            direction LR
+            A["http"]
+        end
+        subgraph server [Server]
+            direction LR
+            C["www.phdcomics.com"]
+        end
+        subgraph page [Page]
+            direction LR
+            E["comics.php"]
+        end
+    end
+    protocol -- :// --- server -- / --- page
+    style url fill:#fff,stroke-width:0px
+    style protocol fill:#fff,stroke:#000
+    style server fill:#fff,stroke:#000
+    style page fill:#fff,stroke:#000
+```
+
+- begins with <span class="textPink">protocol</span> it will connect to
+- specifies _domain name_ (server) and _specific file_ on the server
+  - also can specify email accounts, local files, links to FTP servers, and other sources
+
+History:
+- links information in documents, presented by **Vannevar Bush** in 1945
+- **Ted Nelson** coined hypertext in 1963 and helped create a system with hyperlinks
+- **Douglas Engelbart** demonstrated a user interface with different tools and documents in 1968
+- **Tim Berners-Lee** created a hypertext sharing system called the _World Wide Web_ in 1990
+
+### Headers
