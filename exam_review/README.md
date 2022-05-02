@@ -1,4 +1,4 @@
-<div class="title-page">
+<div class="titlePage">
 
 # CSE3231 Final Exam Study Guide
 ### Grant Butler, Tyler Zars

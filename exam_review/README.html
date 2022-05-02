@@ -1,0 +1,1970 @@
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js"></script>
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+.markdown-preview.markdown-preview * {
+  font-family: "Iosevka";
+  line-height: 1.5em;
+}
+.markdown-preview.markdown-preview .center {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.markdown-preview.markdown-preview .titlePage {
+  text-align: justify;
+  text-align-last: center;
+  margin-top: 50%;
+  page-break-after: always;
+  break-after: page;
+}
+.markdown-preview.markdown-preview .pageBreak {
+  page-break-after: always;
+  break-after: page;
+}
+.markdown-preview.markdown-preview .leftTable {
+  display: block;
+  margin-left: 0px;
+  margin-right: auto;
+  width: 40%;
+}
+.markdown-preview.markdown-preview .leftTable th {
+  background: rgba(0, 0, 0, 0.2);
+}
+.markdown-preview.markdown-preview .centerTable {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+.markdown-preview.markdown-preview .centerTable th {
+  background: rgba(0, 0, 0, 0.4);
+}
+.markdown-preview.markdown-preview .highlightFirstColumn tr td:nth-child(1) {
+  background: rgba(0, 0, 0, 0.2);
+}
+.markdown-preview.markdown-preview .tab {
+  tab-size: 4;
+}
+.markdown-preview.markdown-preview .leftColumn {
+  float: left;
+  width: 50%;
+}
+.markdown-preview.markdown-preview .rightColumn {
+  float: right;
+  width: 50%;
+}
+.markdown-preview.markdown-preview .footnote {
+  position: relative;
+  bottom: 0;
+}
+.markdown-preview.markdown-preview h6 {
+  color: #989991;
+}
+.markdown-preview.markdown-preview a {
+  color: #78DCE8;
+}
+.markdown-preview.markdown-preview .textPink {
+  color: #FF6188 !important;
+}
+.markdown-preview.markdown-preview .textOrange {
+  color: #FC9867;
+}
+.markdown-preview.markdown-preview .textYellow {
+  color: #FFD866;
+}
+.markdown-preview.markdown-preview .textGreen {
+  color: #A9DC76;
+}
+.markdown-preview.markdown-preview .textBlue {
+  color: #78DCE8;
+}
+.markdown-preview.markdown-preview .textPurple {
+  color: #AB9DF2;
+}
+.markdown-preview.markdown-preview .textMatcha {
+  color: #c3e69f;
+}
+.markdown-preview.markdown-preview .textTeal {
+  color: #87dcc6;
+}
+.markdown-preview.markdown-preview pre,
+.markdown-preview.markdown-preview code {
+  white-space: pre-wrap;
+}
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <div class="titlePage">
+<h1>CSE3231 Final Exam Study Guide</h1>
+<h3>Grant Butler, Tyler Zars</h3>
+<h4><a href="mailto:gbutler2020@my.fit.edu">gbutler2020@my.fit.edu</a> | <a href="mailto:tzars2019@my.fit.edu">tzars2019@my.fit.edu</a></h4>
+</div>
+<div style="page-break-after: always; break-after: page;"></div>
+<div style="text-align: center;">
+<h2>Transport Layer</h2>
+</div>
+<h3 class="mume-header" id="udp-and-tcp">UDP and TCP</h3>
+
+<p>Differences:</p>
+<div class="leftColumn">
+<div style="text-align: center;">
+<h4>TCP (Transport Control Protocol)</h4>
+</div>
+<p>Advantages</p>
+<ul>
+<li>Connection oriented transport
+<ul>
+<li>Sender must establish connection before transmission</li>
+<li>Sender notified of delivery or of error</li>
+</ul>
+</li>
+<li><span class="textPink">Byte-stream</span> service
+<ul>
+<li>Data transmission and reception are similar to file I/O</li>
+</ul>
+</li>
+<li>Reliable delivery
+<ul>
+<li>Garuntees packets are assembled <span class="textPink">in order</span></li>
+</ul>
+</li>
+</ul>
+<p>Connection Management</p>
+<ul>
+<li>Connection
+<ul>
+<li>Three way connection increases probability that both endpoints know that connection was acccepted.</li>
+</ul>
+</li>
+<li>Termination
+<ul>
+<li>Four way handshake requires two FIN and two ACK to complete. Ensures proper termination of connection occurs.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="rightColumn">
+<div style="text-align: center;">
+<h4>UDP (User Datagram Protocol)</h4>
+</div>
+<ul>
+<li>Connectionless
+<ul>
+<li>Destination address and port number are added to transport segment&apos;s header and the segment is sent to the destination.</li>
+<li>No confirmation of error or delivery (ACK) is returned.
+<ul>
+<li>Unreliable because of no ACK</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Advantages
+<ul>
+<li>Applications pass <strong><span class="textPink">directly</span></strong> to transport layer.</li>
+<li>Data is transmitted <em><span class="textPink">immediately</span></em>. Will either reach the receiver or not at all.</li>
+<li>Less to manage:
+<ul>
+<li>No <em><span class="textPink">congestion-control</span></em> or retransmission mechanisms.</li>
+<li>No Connection Establishment</li>
+<li>No connection state</li>
+<li>Results in small packet header</li>
+</ul>
+</li>
+<li>Messages can be sent in <span class="textPink">broadcast</span> or <span class="textPink">multicast</span> mode.
+<ul>
+<li>one to multiple receivers (multicast) or all nodes (broadcast)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="tcp-header-fields">TCP Header Fields</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Field</th>
+<th style="text-align:center"><a id="sizeRet" href></a><a href="#size">Size</a> (bits)</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Source Port</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">Identifies source port number (sender&apos;s TCP port)</td>
+</tr>
+<tr>
+<td style="text-align:center">Destination Port</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">Identifies destination port number (receiving port )</td>
+</tr>
+<tr>
+<td style="text-align:center">Sequence Number</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">Used to number TCP segments. If SYN = 0, each byte is assigned a sequence number. <sup><a id="seqRet" href></a><a href="#seq">*</a></sup></td>
+</tr>
+<tr>
+<td style="text-align:center">Acknowledgement Number</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">Indicates next sequence number that sending device is expecting.</td>
+</tr>
+<tr>
+<td style="text-align:center">Offset (Header Length)</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">Shows number of 32 bit words in header. Minimum size of 5 words (<code>0101</code> in binary).</td>
+</tr>
+<tr>
+<td style="text-align:center">Reserved</td>
+<td style="text-align:center">4 (6)</td>
+<td style="text-align:center">Always set to 0.</td>
+</tr>
+<tr>
+<td style="text-align:center"><a id="tcpflagsRet" href></a><a href="#tcpflags">TCP Flags</a></td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">Flags are: URG, ACK, PSH, RST, SYN, FIN</td>
+</tr>
+<tr>
+<td style="text-align:center">Window</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">The size of the receive window, which is the number of bytes beyond sequence number in Acknowledgement field that the receiver is willing to receive.</td>
+</tr>
+<tr>
+<td style="text-align:center">Checksum</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">Used for error checking of header and data.</td>
+</tr>
+<tr>
+<td style="text-align:center">Urgent Pointer</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">Shows the end of urgent data so interrupted data streams can be continued. <sup><a id="urgRet" href></a><a href="#urg">+</a></sup></td>
+</tr>
+<tr>
+<td style="text-align:center">TCP Options</td>
+<td style="text-align:center">variable</td>
+<td style="text-align:center">0 &#x2192; End of Options List, 1 &#x2192; No Operations (NOP, Pad), 2 &#x2192; Maximum segment size, 3 &#x2192; Window Scale, 4 &#x2192; Selective ACK ok, 8 &#x2192; Timestamp</td>
+</tr>
+</tbody>
+</table>
+<div class="footnote">
+<sub>
+<hr>
+<p><a id="size" href></a><a href="#sizeRet">Size</a>: 4 bits &#x2192; nibble, 8 bits &#x2192; byte, 32 bits &#x2192; word<br>
+<a id="seq" href></a><a href="#seqRet">Sequence Number</a>: If SYN = 1, then this is the initial sequence number. The sequence number of the first byte of data will then be this number + 1. <em>i.e.</em>: Let first byte of data have this be 300. Then if a packet has 10 bytes, then the next packet sent will have a sequence number of <code>300 + 10 + 1 = 311</code>.<br>
+<a id="urg" href></a><a href="#urgRet">Urgent Pointer</a>: When URG is set, the data is given priority.<br>
+</p>
+</sub></div>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="a-idtcpflagstcp-flags-explainedtcpflagsreta"><a id="tcpflags" href></a><a href="#tcpflagsRet">TCP Flags Explained</a></h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Flag</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">URG</td>
+<td style="text-align:center">Urgent Pointer.</td>
+</tr>
+<tr>
+<td style="text-align:center">ACK</td>
+<td style="text-align:center">Acknowledgement</td>
+</tr>
+<tr>
+<td style="text-align:center">PSH</td>
+<td style="text-align:center">Push function. TCP allows an application to specify that data is to be pushed immediately.</td>
+</tr>
+<tr>
+<td style="text-align:center">RST</td>
+<td style="text-align:center">Reset connection. Receiver must respond immediately terminating the connection. Transfer of data ceases, so data in transit is lost. Used for abnormal close of TCP connection, unlike FIN.</td>
+</tr>
+<tr>
+<td style="text-align:center">SYN</td>
+<td style="text-align:center">Indicates synchronized sequence numbers. Source is beginning a new sequence.</td>
+</tr>
+<tr>
+<td style="text-align:center">FIN</td>
+<td style="text-align:center">Set when no more data is to come from sender. Used for good closing of TCP connection, unlike RST.</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always; break-after: page;"></div>
+<h2 class="mume-header" id="tcp-flow-control">TCP Flow Control</h2>
+
+<p>TCP needs to control amount of data a sender transmits to avoid overwhelming the receiver.</p>
+<div style="text-align: center;">
+<h3>Congestion Control vs Flow Control</h3>
+</div>
+<div class="leftColumn">
+<h4>Congestion Control</h4>
+<ul>
+<li>focuses on preventing too much data in <span class="textPink">network</span>.</li>
+<li>uses Retransmission Timeout (RTO) and Round Trip Time (RTT)
+<ul>
+<li>RTT is different for each path a packet takes.</li>
+</ul>
+</li>
+<li>A router might only be able to handle 100 Mb/s total, but two senders could send more than that.</li>
+</ul>
+</div>
+<div class="rightColumn">
+<h4>Flow Control</h4>
+<ul>
+<li>Tries to prevent senders from overrunning <span class="textPink">capacity of receivers</span>.
+<ul>
+<li>Can&apos;t prevent congestion at routers.</li>
+</ul>
+</li>
+<li>Uses sliding window to control traffic in transit.
+<ul>
+<li>Uses <span class="textPink">AdvertisedWindow</span> to indicate how much data it can handle.</li>
+<li>Measures in bytes, not packets.</li>
+<li>Limits how many unacknowledged bytes can be in transit at a time.</li>
+<li>TCP vs Data-Link Sliding Windows
+<ul>
+<li>Data-Link layer controls transmission of frames over links between adjacent nodes.
+<ul>
+<li>one sender at a time</li>
+<li>always arrive in order sent (unless frames are lost)</li>
+</ul>
+</li>
+<li>TCP deals with end-to-end flow
+<ul>
+<li>each receiver can have multiple senders</li>
+<li>each packet can follow a different path</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Header uses these fields to manage flow control:
+<ul>
+<li><em><span class="textPink">SequenceNum</span></em></li>
+<li><em><span class="textPink">Acknowledgement</span></em></li>
+<li><em><span class="textPink">AdvertisedWindow</span></em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always; break-after: page;"></div>
+<h3 class="mume-header" id="tcp-congestion-control-additive-increase-and-multiplicative-decrease-aimd">TCP Congestion Control: Additive Increase and Multiplicative Decrease (AIMD)</h3>
+
+<p>TCP Source sets the CongestionWindow based on level of congestion it <em>perceives</em> in the network.</p>
+<ul>
+<li>Involves <span class="textPink">decreasing</span> congestion window when congestion goes up and <span class="textGreen">increasing</span> the congestion window when level of congestion goes down.</li>
+<li>This is called <em><span class="textPink">Additive Increase / Multiplicative Decrease</span></em> (AIMD).</li>
+</ul>
+<h4 class="mume-header" id="additive-increase">Additive Increase</h4>
+
+<ul>
+<li>Every successful send from source that is a <em>CongestionWindow</em>&apos;s worth of packets adds the equivalent of 1 to CongestionWindow.
+<ul>
+<li>Success is measured as one ACK per RTT.</li>
+</ul>
+</li>
+<li>Increase is slower than decrease and avoids too rapid an increase in transmission rate.</li>
+</ul>
+<h4 class="mume-header" id="multiplicative-decrease">Multiplicative Decrease</h4>
+
+<ul>
+<li>Easier to understand in terms of packets, despite <span class="textPink">CongestionWindow</span> being measured in bytes.
+<ul>
+<li><em>e.g.:</em>
+<ul>
+<li>CongestionWindow is 16 packets</li>
+<li>If a loss is detected, CongestionWindow is set to 8.</li>
+<li>Additional losses go &#x2192; 4, 2, 1.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="slow-start">Slow Start</h4>
+
+<ol>
+<li>Source starts <em>CongestionWindow</em> at one packet.</li>
+<li>Sends one packet.</li>
+<li>ACK arrives &#x2192; <em>CongestionWindow</em> += 1.</li>
+<li>Two packets are sent.</li>
+<li>Two ACKs &#x2192; <em>CongestionWindow</em> += 2.</li>
+</ol>
+<p>Trend: TCP effectively <strong>doubles</strong> every RTT.</p>
+<ol>
+<li><strong>Slow Start</strong> begins by doubling <em>CongestionWindow</em> size.</li>
+<li>When threshold is reached, switches to <em>additive increase</em>.</li>
+<li>When packet is lost, <em>CongestionWindow</em> goes to 1 and slow start repeats.</li>
+</ol>
+<div style="page-break-after: always; break-after: page;"></div>
+<h3 class="mume-header" id="tcp-timeout-and-rtt">TCP Timeout and RTT</h3>
+
+<h4 class="mume-header" id="timeout">Timeout</h4>
+
+<p>Timeout period must be long enough to allow longer paths. If a packet is lost, multiple packets can be sent out before timeout expires. Receiver can&apos;t ACK because missing packet caused a gap in <em>SequenceNum</em>. Sender can reach <em>CongestionWindow</em> limit while waiting for timeout.</p>
+<p><strong>Fast Retransmission and <em>Duplicate Acknowledgements</em></strong><br>
+Receiver sends ACK for later packets, but with ACK number of last packet before lost packet--<em>i.e.</em> <span class="textPink">duplicate acknowledgements</span>.</p>
+<ul>
+<li>Tells sender that at least one packet hasn&apos;t arrived, but later ACK&apos;s indicate some later packets arrived.</li>
+<li>Duplicate ACK number tells sender which packet wasn&apos;t received.</li>
+</ul>
+<p>Sender can <em>resend</em> missing packet without waiting for timeout to expire. This is called <em>fast retransmission</em> and can trigger transmission of lost packets sooner than regular timeout.</p>
+<ul>
+<li>Not triggered until <em><span class="textPink">three duplicate ACK&apos;s</span></em> arrive.</li>
+<li>Sender knows packed was lost, and halves <em>slow start threshold</em> and goes into slow start.</li>
+</ul>
+<p>Fast Recovery</p>
+<ul>
+<li>Lost packed decreases <em>CongestionWindow</em> to one and starts slow start.</li>
+<li>Fast retransmission signals congestion, and instead of lower <em>CongestionWindow</em>, fast recovery uses ACKs in transit to trigger sending of new packets.</li>
+<li>Removes slow start phase when fast retransmit detects lost packet.</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="round-trip-time-rtt">Round Trip Time (RTT)</h4>
+
+<p>Retransmission TimeOut (RTO) is based on <span class="textPink">Round Trip Time</span> (RTT) for a given connection.</p>
+<ul>
+<li>At connection, sender and receiver determine RTT and sender uses that for RTO.</li>
+<li>Sender calulates an average RTT to deal with delays.</li>
+</ul>
+<p>Determining RTT:</p>
+<ul>
+<li>Sender and receiver both need RTT, so they put timestamps in options field to track send and receive times.</li>
+<li>A <em>Smoothed RTT</em> (SRTT) is calculated based on the SRTT averaged over time and the most recent RTT.</li>
+</ul>
+<div class="center">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>=</mo><mi>&#x3B1;</mi><mo>&#x2217;</mo><mi>S</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>&#x2212;</mo><mi>&#x3B1;</mi><mo stretchy="false">)</mo><mi>R</mi><mi>T</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">SRTT = \alpha*SRTT + (1 - \alpha)RTT</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">SRTT</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">&#x3B1;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">SRTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">&#x3B1;</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span></span></span></span> where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B1;</mi><mo>=</mo><mn>0.9</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">&#x3B1;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.9</span></span></span></span></p>
+</div>
+<ul>
+<li>Smoothed RTT calculation was revised to include <em>variance</em> in RTT.
+<ul>
+<li><strong>Variance</strong> measures how much RTT changes over time.</li>
+</ul>
+</li>
+</ul>
+<div class="center">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>a</mi><mi>r</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>=</mo><mi>&#x3B2;</mi><mo>&#x2217;</mo><mi>V</mi><mi>a</mi><mi>r</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>&#x2212;</mo><mi>&#x3B2;</mi><mo stretchy="false">)</mo><mo>&#x2217;</mo><mi mathvariant="normal">&#x2223;</mi><mi>S</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>&#x2212;</mo><mi>R</mi><mi>T</mi><mi>T</mi><mi mathvariant="normal">&#x2223;</mi></mrow><annotation encoding="application/x-tex">VarRTT = \beta * VarRTT + (1 - \beta) * |SRTT - RTT|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">Va</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">Va</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathnormal" style="margin-right:0.13889em;">SRTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mord">&#x2223;</span></span></span></span> where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B2;</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">\beta = 0.75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.75</span></span></span></span></p>
+</div>
+<ul>
+<li>Retransmission TimeOut (RTO) is calculated as follows:</li>
+</ul>
+<div class="center">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>T</mi><mi>O</mi><mo>=</mo><mi>S</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">RTO = SRTT + 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">RTO</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">SRTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span><sup>++</sup> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2217;</mo><mtext>&#xA0;</mtext><mi>V</mi><mi>a</mi><mi>r</mi><mi>R</mi><mi>T</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">*\ VarRTT</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">&#x2217;</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">Va</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span></span></span></span></p>
+</div>
+<p><sub>++(multiplying by 4 is based on experimentation)</sub></p>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="ip-checksum">IP Checksum</h4>
+
+<p>Header Checksum: 16 bits</p>
+<ul>
+<li>A checksum on the header only. Since some header fields change, it is <em><span class="textPink">recomputed</span></em> and verified each time the header is processed.</li>
+<li>Algorithm:
+<ul>
+<li>16 bit one&apos;s complement of the one&apos;s complement sum of all 16 bit words in the header. The value of the checksum field is zero.</li>
+</ul>
+</li>
+</ul>
+<p>IP Checksum Example:</p>
+<ol>
+<li>break sequence into 16-bit words</li>
+<li>Add 16-bit values. Each carry-out produced is added to the LSb.</li>
+<li>Invert all bits to get one&apos;s complement.</li>
+</ol>
+<p>Header to check:</p>
+<div class="center">
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1000</mn><mtext>&#xA0;</mtext><mn>0110</mn><mtext>&#xA0;</mtext><mn>0101</mn><mtext>&#xA0;</mtext><mn>1110</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1010</mn><mtext>&#xA0;</mtext><mn>1100</mn><mtext>&#xA0;</mtext><mn>0110</mn><mtext>&#xA0;</mtext><mn>0000</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0111</mn><mtext>&#xA0;</mtext><mn>0001</mn><mtext>&#xA0;</mtext><mn>0010</mn><mtext>&#xA0;</mtext><mn>1010</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1000</mn><mtext>&#xA0;</mtext><mn>0001</mn><mtext>&#xA0;</mtext><mn>1011</mn><mtext>&#xA0;</mtext><mn>0101</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+&amp;1000\ 0110\ 0101\ 1110\\
+&amp;1010\ 1100\ 0110\ 0000\\
+&amp;0111\ 0001\ 0010\ 1010\\
+&amp;1000\ 0001\ 1011\ 0101\\
+\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6em;vertical-align:-2.75em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-3.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-0.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1000</span><span class="mspace">&#xA0;</span><span class="mord">0110</span><span class="mspace">&#xA0;</span><span class="mord">0101</span><span class="mspace">&#xA0;</span><span class="mord">1110</span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1010</span><span class="mspace">&#xA0;</span><span class="mord">1100</span><span class="mspace">&#xA0;</span><span class="mord">0110</span><span class="mspace">&#xA0;</span><span class="mord">0000</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0111</span><span class="mspace">&#xA0;</span><span class="mord">0001</span><span class="mspace">&#xA0;</span><span class="mord">0010</span><span class="mspace">&#xA0;</span><span class="mord">1010</span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1000</span><span class="mspace">&#xA0;</span><span class="mord">0001</span><span class="mspace">&#xA0;</span><span class="mord">1011</span><span class="mspace">&#xA0;</span><span class="mord">0101</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+</div>
+<div style="page-break-after: always; break-after: page;"></div>
+<p>Add 16-bit values 2 at a time and convert to one&apos;s complement:</p>
+<div class="center">
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left right left" columnspacing="0em 1em 0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1000</mn><mtext>&#xA0;</mtext><mn>0110</mn><mtext>&#xA0;</mtext><mn>0101</mn><mtext>&#xA0;</mtext><mn>1110</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>f</mi><mi>i</mi><mi>r</mi><mi>s</mi><mi>t</mi><mtext>&#xA0;</mtext><mi>v</mi><mi>a</mi><mi>l</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>+</mo><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1010</mn><mtext>&#xA0;</mtext><mn>1100</mn><mtext>&#xA0;</mtext><mn>0110</mn><mtext>&#xA0;</mtext><mn>0000</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>s</mi><mi>e</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>d</mi><mtext>&#xA0;</mtext><mi>v</mi><mi>a</mi><mi>l</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mover accent="true"><mtext>&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover accent="true"><mtext>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mn>1</mn><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0011</mn><mtext>&#xA0;</mtext><mn>0010</mn><mtext>&#xA0;</mtext><mn>1011</mn><mtext>&#xA0;</mtext><mn>1110</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>c</mi><mi>a</mi><mi>r</mi><mi>r</mi><mi>y</mi><mo>&#x2212;</mo><mi>o</mi><mi>u</mi><mi>t</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>+</mo><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0000</mn><mtext>&#xA0;</mtext><mn>0000</mn><mtext>&#xA0;</mtext><mn>0000</mn><mtext>&#xA0;</mtext><mn>0001</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>a</mi><mi>d</mi><mi>d</mi><mtext>&#xA0;</mtext><mi>t</mi><mi>o</mi><mtext>&#xA0;</mtext><mi>L</mi><mi>S</mi><mi>b</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mover accent="true"><mtext>&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover accent="true"><mtext>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0011</mn><mtext>&#xA0;</mtext><mn>0010</mn><mtext>&#xA0;</mtext><mn>11011</mn><mtext>&#xA0;</mtext><mn>1111</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>+</mo><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0111</mn><mtext>&#xA0;</mtext><mn>0001</mn><mtext>&#xA0;</mtext><mn>0010</mn><mtext>&#xA0;</mtext><mn>1010</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>t</mi><mi>h</mi><mi>i</mi><mi>r</mi><mi>d</mi><mtext>&#xA0;</mtext><mi>v</mi><mi>a</mi><mi>l</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mover accent="true"><mtext>&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover accent="true"><mtext>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mn>0</mn><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1010</mn><mtext>&#xA0;</mtext><mn>0011</mn><mtext>&#xA0;</mtext><mn>1110</mn><mtext>&#xA0;</mtext><mn>1001</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>n</mi><mi>o</mi><mtext>&#xA0;</mtext><mi>c</mi><mi>a</mi><mi>r</mi><mi>r</mi><mi>y</mi><mo>&#x2212;</mo><mi>o</mi><mi>u</mi><mi>t</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>+</mo><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1000</mn><mtext>&#xA0;</mtext><mn>0001</mn><mtext>&#xA0;</mtext><mn>1011</mn><mtext>&#xA0;</mtext><mn>0101</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>f</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>t</mi><mi>h</mi><mtext>&#xA0;</mtext><mi>v</mi><mi>a</mi><mi>l</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mover accent="true"><mtext>&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover accent="true"><mtext>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mn>1</mn><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0010</mn><mtext>&#xA0;</mtext><mn>0101</mn><mtext>&#xA0;</mtext><mn>1001</mn><mtext>&#xA0;</mtext><mn>1110</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>c</mi><mi>a</mi><mi>r</mi><mi>r</mi><mi>y</mi><mo>&#x2212;</mo><mi>o</mi><mi>u</mi><mi>t</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>+</mo><mtext>&#xA0;</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0000</mn><mtext>&#xA0;</mtext><mn>0000</mn><mtext>&#xA0;</mtext><mn>0000</mn><mtext>&#xA0;</mtext><mn>0001</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>a</mi><mi>d</mi><mi>d</mi><mtext>&#xA0;</mtext><mi>t</mi><mi>o</mi><mtext>&#xA0;</mtext><mi>L</mi><mi>S</mi><mi>b</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mover accent="true"><mtext>&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mover accent="true"><mtext>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</mtext><mo stretchy="true">&#x203E;</mo></mover></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>0010</mn><mtext>&#xA0;</mtext><mn>0101</mn><mtext>&#xA0;</mtext><mn>1001</mn><mtext>&#xA0;</mtext><mn>1111</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>o</mi><mi>n</mi><msup><mi>e</mi><mo mathvariant="normal" lspace="0em" rspace="0em">&#x2032;</mo></msup><mi>s</mi><mtext>&#xA0;</mtext><mi>c</mi><mi>o</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>&#xA0;</mtext><mi>s</mi><mi>u</mi><mi>m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>f</mi><mi>l</mi><mi>i</mi><mi>p</mi><mtext>&#xA0;</mtext><mi>b</mi><mi>i</mi><mi>t</mi><mi>s</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mn>1101</mn><mtext>&#xA0;</mtext><mn>1010</mn><mtext>&#xA0;</mtext><mn>0110</mn><mtext>&#xA0;</mtext><mn>0000</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>o</mi><mi>n</mi><msup><mi>e</mi><mo mathvariant="normal" lspace="0em" rspace="0em">&#x2032;</mo></msup><mi>s</mi><mtext>&#xA0;</mtext><mi>c</mi><mi>o</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+&amp;1000\ 0110\ 0101\ 1110 &amp;&amp; first\ val\\
++\ &amp;1010\ 1100\ 0110\ 0000 &amp;&amp; second\ val\\
+\overline{\ \ }&amp;\overline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
+1\ &amp;0011\ 0010\ 1011\ 1110 &amp;&amp; carry-out\\
++\ &amp;0000\ 0000\ 0000\ 0001 &amp;&amp; add\ to\ LSb\\
+\overline{\ \ }&amp;\overline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
+&amp;0011\ 0010\ 11011\ 1111\\
++\ &amp;0111\ 0001\ 0010\ 1010 &amp;&amp; third\ val\\
+\overline{\ \ }&amp;\overline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
+0\ &amp;1010\ 0011\ 1110\ 1001 &amp;&amp; no\ carry-out\\
++\ &amp;1000\ 0001\ 1011\ 0101 &amp;&amp; fourth\ val\\
+\overline{\ \ }&amp;\overline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
+1\ &amp;0010\ 0101\ 1001\ 1110 &amp;&amp; carry-out\\
++\ &amp;0000\ 0000\ 0000\ 0001 &amp;&amp; add\ to\ LSb\\
+\overline{\ \ }&amp;\overline{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\\
+&amp;0010\ 0101\ 1001\ 1111 &amp;&amp; one&apos;s\ complement\ sum\\
+&amp;&amp;&amp; flip\ bits\\
+&amp;1101\ 1010\ 0110\ 0000 &amp;&amp; one&apos;s\ complement\\
+\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:27em;vertical-align:-13.25em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:13.75em;"><span style="top:-15.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-14.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mspace">&#xA0;</span></span></span><span style="top:-12.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-11.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace">&#xA0;</span></span></span><span style="top:-9.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mspace">&#xA0;</span></span></span><span style="top:-8.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-6.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mspace">&#xA0;</span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mspace">&#xA0;</span></span></span><span style="top:0.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:2.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace">&#xA0;</span></span></span><span style="top:3.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mspace">&#xA0;</span></span></span><span style="top:5.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:6.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:8.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:9.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:13.25em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:13.75em;"><span style="top:-15.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1000</span><span class="mspace">&#xA0;</span><span class="mord">0110</span><span class="mspace">&#xA0;</span><span class="mord">0101</span><span class="mspace">&#xA0;</span><span class="mord">1110</span></span></span><span style="top:-14.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1010</span><span class="mspace">&#xA0;</span><span class="mord">1100</span><span class="mspace">&#xA0;</span><span class="mord">0110</span><span class="mspace">&#xA0;</span><span class="mord">0000</span></span></span><span style="top:-12.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-11.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0011</span><span class="mspace">&#xA0;</span><span class="mord">0010</span><span class="mspace">&#xA0;</span><span class="mord">1011</span><span class="mspace">&#xA0;</span><span class="mord">1110</span></span></span><span style="top:-9.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0000</span><span class="mspace">&#xA0;</span><span class="mord">0000</span><span class="mspace">&#xA0;</span><span class="mord">0000</span><span class="mspace">&#xA0;</span><span class="mord">0001</span></span></span><span style="top:-8.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-6.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0011</span><span class="mspace">&#xA0;</span><span class="mord">0010</span><span class="mspace">&#xA0;</span><span class="mord">11011</span><span class="mspace">&#xA0;</span><span class="mord">1111</span></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0111</span><span class="mspace">&#xA0;</span><span class="mord">0001</span><span class="mspace">&#xA0;</span><span class="mord">0010</span><span class="mspace">&#xA0;</span><span class="mord">1010</span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1010</span><span class="mspace">&#xA0;</span><span class="mord">0011</span><span class="mspace">&#xA0;</span><span class="mord">1110</span><span class="mspace">&#xA0;</span><span class="mord">1001</span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1000</span><span class="mspace">&#xA0;</span><span class="mord">0001</span><span class="mspace">&#xA0;</span><span class="mord">1011</span><span class="mspace">&#xA0;</span><span class="mord">0101</span></span></span><span style="top:0.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:2.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0010</span><span class="mspace">&#xA0;</span><span class="mord">0101</span><span class="mspace">&#xA0;</span><span class="mord">1001</span><span class="mspace">&#xA0;</span><span class="mord">1110</span></span></span><span style="top:3.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0000</span><span class="mspace">&#xA0;</span><span class="mord">0000</span><span class="mspace">&#xA0;</span><span class="mord">0000</span><span class="mspace">&#xA0;</span><span class="mord">0001</span></span></span><span style="top:5.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span></span><span style="top:-3.12em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:6.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">0010</span><span class="mspace">&#xA0;</span><span class="mord">0101</span><span class="mspace">&#xA0;</span><span class="mord">1001</span><span class="mspace">&#xA0;</span><span class="mord">1111</span></span></span><span style="top:8.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span></span></span><span style="top:9.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord">1101</span><span class="mspace">&#xA0;</span><span class="mord">1010</span><span class="mspace">&#xA0;</span><span class="mord">0110</span><span class="mspace">&#xA0;</span><span class="mord">0000</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:13.25em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:13.75em;"><span style="top:-15.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-14.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-11.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-9.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-5.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-0.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:2.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:3.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:6.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:8.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:9.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:13.25em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:13.75em;"><span style="top:-15.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal">rs</span><span class="mord mathnormal">t</span><span class="mspace">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span><span style="top:-14.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">seco</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mspace">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span><span style="top:-11.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">rry</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span></span></span><span style="top:-9.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">dd</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">b</span></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">hi</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">d</span><span class="mspace">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">rry</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mspace">&#xA0;</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span><span style="top:2.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">rry</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span></span></span><span style="top:3.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">dd</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">b</span></span></span><span style="top:6.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">s</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">co</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span></span></span><span style="top:8.09em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">bi</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span><span style="top:9.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">s</span><span class="mspace">&#xA0;</span><span class="mord mathnormal">co</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:13.25em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+</div>
+<p>Thus, the 16 bit checksum is <code>1101 1010 0110 0000</code>.</p>
+<div style="page-break-after: always; break-after: page;"></div>
+<h2 class="mume-header" id="applications">Applications</h2>
+
+<p>Application layer interfaces with transport layer, isolating applications from the details of packet delivery. Applications can use either UDP or TCP. Some use UDP but add features like acknowledgements on their own to get reliable delivery without TCP&apos;s overhead.</p>
+<h3 class="mume-header" id="protocols">Protocols</h3>
+
+<p>Usually, an application that supports interaction and data transfer have a <em>protocol</em> for communication between nodes. One may be a <em>server</em>, collecting and delivering data, while another may be a client, requesting and providing data. Application Protocols describe how endpoints will interact to accomplish tasks.</p>
+<h4 class="mume-header" id="internet-rfc-request-for-comment">Internet RFC (Request For Comment)</h4>
+
+<p>A set of application protocols that standardize actions across vendors. Examples include:</p>
+<ul>
+<li>Simple Mail Transfer Protocol (SMTP) <em><span class="textPink">RFC 5321</span></em></li>
+<li>Hypertext Transfer Protocol (HTTP) <em><span class="textPink">RFC 2616/7540</span></em></li>
+<li>File Transfer Protocol (FTP) <em><span class="textPink">RFC 959</span></em></li>
+</ul>
+<p>Clear application protocols allow developers to create servers and clients that interact in established and predictable ways.</p>
+<ul>
+<li>Some inconsistencies happen when features are added that are <span class="textPink">not part of the protocol</span>.</li>
+</ul>
+<h5 class="mume-header" id="port-numbers">Port Numbers</h5>
+
+<p>Servers typically listen on well known ports for connections. A range of UDP and TCP ports are assigned to specific protocols, while others are not reserved.</p>
+<ul>
+<li><ins>Ports 0-1023</ins> are reserved by the <span class="textPink">Internet Assigned Numbers Authority</span> (IANA).</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<p>Common ports and their services:</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Service</th>
+<th style="text-align:center">Port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SSH</td>
+<td style="text-align:center">22</td>
+</tr>
+<tr>
+<td style="text-align:center">HTTP</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">NTP (Network Time Protocol)</td>
+<td style="text-align:center">123</td>
+</tr>
+<tr>
+<td style="text-align:center">IMAP (email)</td>
+<td style="text-align:center">143 or 220</td>
+</tr>
+<tr>
+<td style="text-align:center">LDAP (authentication protocol)</td>
+<td style="text-align:center">289</td>
+</tr>
+<tr>
+<td style="text-align:center">HTTPS (using TLS/SSL)</td>
+<td style="text-align:center">443</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 class="mume-header" id="requestreply-protocols">Request/Reply Protocols</h4>
+
+<p>Messages are transmitted by client and server to manage and exchange data. Often consist of text commands.</p>
+<ul>
+<li><em><span class="textPink">Stateful</span></em> protocols require client and server to keep track of current state of exchange.</li>
+<li><em><span class="textPink">Stateless</span></em> protocols might have a server not keep a record of exchanges and close connection after each message.</li>
+</ul>
+<h4 class="mume-header" id="publish-subscribe-protocol-pubsub">Publish-Subscribe Protocol (PubSub)</h4>
+
+<ul>
+<li><strong>Publishers</strong> make data available for <em>subscribers</em> who register to receive types of messages.
+<ul>
+<li><em>Loosely coupled</em> to subscribers and produce whether or not it is used.</li>
+<li>Has better scalability because publishers don&apos;t manage connections.</li>
+</ul>
+</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Apache Kafka</li>
+<li>Google Cloud Pub/Sub</li>
+<li>Data Distribution Service (DDS)</li>
+</ul>
+<h4 class="mume-header" id="message-queueing">Message Queueing</h4>
+
+<p>Similar to PubSub, these protocols don&apos;t require servers to wait for a client to request. Important aspects include:</p>
+<ul>
+<li>A <em><span class="textPink">queue manager</span></em> is implemented and announced to users.</li>
+<li>Applications <em>register</em> to be notified when messages arrive, and then can download those when ready.</li>
+<li>Applications can add messages to a queue.</li>
+<li>Queueing <em>decouples</em> senders and receivers, so senders don&apos;t wait before they add to the queue.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Apache ActiveMQ</li>
+<li>Microsoft Message Queueing</li>
+<li>Java Message Service</li>
+</ul>
+<h4 class="mume-header" id="peer-to-peer">Peer to Peer</h4>
+
+<p>Each node can exchange messages with any other node.</p>
+<ul>
+<li>a node can be a client <strong>and</strong> a server</li>
+<li>data is <em>decentralized</em> and passed between peers</li>
+<li>not all nodes have same capabilities, so some may perform special tasks to help other nodes</li>
+<li>peer networks can be <em>structured</em> with set topology or <em>unstructured</em> and allow rapid changes to adapt</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Bitcoin and other Cryptocurrency</li>
+<li>BitTorrent</li>
+<li>Gnutella</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="hypertext-transfer-protocol-http">HyperText Transfer Protocol (HTTP)</h4>
+
+<p>Used for connections between clients (browsers) and servers in the World Wide Web. Provides request/response interaction between server and multiple clients.</p>
+<ul>
+<li>Web browser acts as <em><span class="textPink">User Agent</span></em></li>
+<li>Communications are based on TCP</li>
+<li><em>Stateless</em> protocol
+<ul>
+<li><span class="textPink">keep-alive</span> feature was added in v1.1</li>
+<li>retaining state information was solved with variables in messages or <span class="textPink">web cookies</span> on client&apos;s host</li>
+</ul>
+</li>
+</ul>
+<p>Messages:</p>
+<pre data-role="codeBlock" data-info="plain {.line-numbers}" class="language-plain line-numbers">START_LINE &lt;CRLF&gt;
+MESSAGE_HEADER &lt;CRLF&gt;
+&lt;CRLF&gt;
+MESSAGE_BODY &lt;CRLF&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></pre><p><code>START_LINE</code> indicates request or response message. Each section ends with CRLF.</p>
+<h5 class="mume-header" id="cookies">Cookies</h5>
+
+<p>Coockies are used to support <em>stateful</em> client/server interactions</p>
+<ul>
+<li>server sends cookies (state) with response</li>
+<li>client stores them locally
+<ul>
+<li>client sends cookie with a new request to the server</li>
+</ul>
+</li>
+<li>server extracts state information from cookie</li>
+</ul>
+<p>Examples:</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Path</th>
+<th>Content</th>
+<th>Expires</th>
+<th>Secure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://toms-casino.com">toms-casino.com</a></td>
+<td>/</td>
+<td>CustomerID=297793521</td>
+<td>15-10-10 17:00</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><a href="http://jills-store.com">jills-store.com</a></td>
+<td>/</td>
+<td>Cart=1-00501;1-07031;2-13721</td>
+<td>11-1-11 14:22</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="http://aportal.com">aportal.com</a></td>
+<td>/</td>
+<td>Prefs=Stk:CSCO+ORCL;Spt:Jets</td>
+<td>31-13-20 23:59</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="http://sneaky.com">sneaky.com</a></td>
+<td>/</td>
+<td>UserID=4627239101</td>
+<td>31-12-19 23:59</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="page-break-after: always; break-after: page;"></div>
+<h5 class="mume-header" id="urls">URLs</h5>
+
+<p>Identification of servers and hyperlinks is based on <em><span class="textPink">Uniform Resource Locators</span></em> (URLs), which contain information to access a target server and document on that server.</p>
+<ul>
+<li>HTTP headers are text based and use standard header fields to manage connections and data exchange</li>
+<li>HTTP connections are not encrypted, but <em><span class="textPink">HTTPS</span></em> creates an encrypted connection before data is exchanged
+<ul>
+<li>protects data, but does not authenticate users</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<div class="mermaid">flowchart LR
+    subgraph url [URL]
+        direction LR
+        subgraph protocol [Protocol &amp;nbsp]
+            direction LR
+            A[&quot;http&quot;]
+        end
+        subgraph server [Server]
+            direction LR
+            C[&quot;www.phdcomics.com&quot;]
+        end
+        subgraph page [Page]
+            direction LR
+            E[&quot;comics.php&quot;]
+        end
+    end
+    protocol -- :// --- server -- / --- page
+    style url fill:#fff,stroke-width:0px
+    style protocol fill:#fff,stroke:#000
+    style server fill:#fff,stroke:#000
+    style page fill:#fff,stroke:#000
+</div><ul>
+<li>begins with <span class="textPink">protocol</span> it will connect to</li>
+<li>specifies <em>domain name</em> (server) and <em>specific file</em> on the server
+<ul>
+<li>also can specify email accounts, local files, links to FTP servers, and other sources</li>
+</ul>
+</li>
+</ul>
+<p>History:</p>
+<ul>
+<li>links information in documents, presented by <strong>Vannevar Bush</strong> in 1945</li>
+<li><strong>Ted Nelson</strong> coined hypertext in 1963 and helped create a system with hyperlinks</li>
+<li><strong>Douglas Engelbart</strong> demonstrated a user interface with different tools and documents in 1968</li>
+<li><strong>Tim Berners-Lee</strong> created a hypertext sharing system called the <em>World Wide Web</em> in 1990</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h5 class="mume-header" id="http-headers">HTTP Headers</h5>
+
+<div class="center">
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Example Headers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browser capabilities (client &#x2192; server)</td>
+<td>User-Agent, Accept, Accept-Charset, Accept-Encoding, Accept-Language</td>
+</tr>
+<tr>
+<td>Caching related (mixed directions)</td>
+<td>If-Modified-Since, If-None-Match, Date, Last-Modified, Expires, Cache-Control, ETag</td>
+</tr>
+<tr>
+<td>Browser context (client &#x2192; server)</td>
+<td>Cookie, Referrer, Authorization, Host</td>
+</tr>
+<tr>
+<td>Content delivery (server &#x2192; client)</td>
+<td>Content-Encoding, Content-Length, Content-Type, Content-Language, Content-Range, Set-Cookie</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 class="mume-header" id="http-requests">HTTP Requests</h5>
+
+<h6 class="mume-header" id="methods">Methods</h6>
+
+<div class="center">
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPTIONS</td>
+<td>Request information about available options</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>Retrieve document in URL</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>Retrieve metainfo about document in URL</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>Give information to server</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>Store document under URL</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Delete URL</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>Loopback request message</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>For use by proxies</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Example:</p>
+<pre data-role="codeBlock" data-info="plain {.line-numbers}" class="language-plain line-numbers">GET /download.html HTTP/1.1
+Host: www.ethereal.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1;
+en-US; rv:1.6) Gecko/20040113
+Accept:
+text/xml,application/xml,application/xhtml+xml,text/htm
+l;q=0.9,text/plain;q=0.8,image/png,image/jpeg,image/gif
+;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://www.ethereal.com/development.html
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><h5 class="mume-header" id="http-response">HTTP Response</h5>
+
+<p>Steps server takes to serve pages:</p>
+<ol>
+<li>Accept TCP connection</li>
+<li>Receive page request and map it to requested resource</li>
+</ol>
+<ul>
+<li>May be static or requires execution of a program</li>
+</ul>
+<ol start="3">
+<li>Send reply to client</li>
+</ol>
+<ul>
+<li>May include links to other resources that client&apos;s browser has to access</li>
+</ul>
+<ol start="4">
+<li>Release idle TCP connections</li>
+</ol>
+<p>Responses begin with a <code>START_LINE</code>, just like requests. The line specifies:</p>
+<ul>
+<li>The <span class="textPink">version of HTTP</span> being used</li>
+<li>A <span class="textGreen">three digit code</span> indicating whether request was successful</li>
+<li>A <span class="textTeal">text string</span> giving reason for response.</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h6 class="mume-header" id="response-codes">Response Codes:</h6>
+
+<div class="center">
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1XX</code></td>
+<td>Information</td>
+<td><code>100</code> = server agrees to handle request</td>
+</tr>
+<tr>
+<td><code>2XX</code></td>
+<td>Success</td>
+<td><code>200</code> = request succeeded; <code>204</code> = no content present</td>
+</tr>
+<tr>
+<td><code>3XX</code></td>
+<td>Redirection</td>
+<td><code>301</code> = page moved; <code>304</code> = cached page still valid</td>
+</tr>
+<tr>
+<td><code>4XX</code></td>
+<td>Client error</td>
+<td><code>403</code> = forbidden page; <code>404</code> page not found</td>
+</tr>
+<tr>
+<td><code>5XX</code></td>
+<td>Server error</td>
+<td><code>500</code> = internal server error; <code>503</code> = try again later</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Example:</p>
+<pre data-role="codeBlock" data-info="plain {.line-numbers}" class="language-plain line-numbers">HTTP/1.1 200 OK
+Date: Thu, 13 May 2004 10:17:12 GMT
+Server: Apache
+Last-Modified: Tue, 20 Apr 2004 13:17:00 GMT ETag: &quot;9a01a-4696-7e354b00&quot;
+Accept-Ranges: bytes
+Content-Length: 18070
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=ISO-8859-1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><h4 class="mume-header" id="static-vs-dynamic-http-pages">Static vs. Dynamic HTTP Pages</h4>
+
+<div class="leftColumn">
+<h5>Static</h5>
+<ul>
+<li>pre-built files</li>
+<li>content doesn&apos;t change between viewing, unless edited by administrator</li>
+<li>often written in HTML or similar languages</li>
+<li>can still have interactive parts, containing text and images</li>
+<li>style sheets are used to customize presentation</li>
+</ul>
+</div>
+<div class="rightColumn">
+<h5>Dynamic</h5>
+<ul>
+<li>generated by programs running on client/server</li>
+<li>created on demand by software</li>
+<li>sometimes generated based on user input or data from another database</li>
+<li>written in languages like PHP, JavaScript/TypeScript, Ruby, Python, etc.</li>
+</ul>
+</div>
+<div class="mermaid">flowchart LR
+    subgraph serverPHP [&amp;nbspServer-side scripting with PHP &amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp]
+        direction LR
+        u[user] &lt;---&gt; b[browser]
+        subgraph server [server&amp;nbsp]
+            direction LR
+            p(PHP)
+
+        end
+        b &lt;---&gt; server
+    end
+
+    style serverPHP fill:#fff,stroke-width:0px
+    style server fill:#fff,stroke:#000
+</div><div class="mermaid">flowchart LR
+    subgraph clientJS [Client-side scripting with JavaScript&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp&amp;nbsp]
+        direction LR
+        u[user] &lt;---&gt; b[browser]
+        subgraph b [browser]
+            direction LR
+            js(JavaScript)
+        end
+        b &lt;---&gt; server
+    end
+    style clientJS fill:#fff,stroke-width:0px
+    style b fill:#fff,stroke:#000
+</div><h6 class="mume-header" id="dom-document-object-model">DOM (Document Object Model)</h6>
+
+<p>Representation as a tree that web pages can alter. Dynamic pages use this to change their structure by altering attributes in elements on the page.</p>
+<p><span class="textPink">XML</span> is a markup language that focuses on document structure and not page presentation.</p>
+<h3 class="mume-header" id="email">Email</h3>
+
+<p><em><span class="textPink">RFC 822</span></em> defined email to have a <em>header</em> and a <em>body</em>. Originally only ASCII text, but extended with the <span class="textPurple">Multipurpose Internet Mail Extensions</span> (MIME) protocol, allowing the email <em>body</em> to carry all types of data</p>
+<h4 class="mume-header" id="message-formats">Message Formats</h4>
+
+<p>email message header is lines of text terminated by <em>CarriageReturnLineFeed</em> (CRLF)</p>
+<ul>
+<li>each line has a <span class="textPink">type</span> and <span class="textPink">value</span> seperated by a colon (<span class="textTeal">:</span>)</li>
+<li>header is separated from message by a blank line</li>
+<li><em><span class="textPink">RFC 822</span></em> was extended by <span class="textPurple">MIME</span> to allow different types of data</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h5 class="mume-header" id="header-fields">Header Fields</h5>
+
+<h6 class="mume-header" id="_span-classtexttealmessage-transportspan_"><em><span class="textTeal">message transport</span></em></h6>
+
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>To:</td>
+<td>Email address of primary recipient</td>
+</tr>
+<tr>
+<td>Cc:</td>
+<td>address of secondary recipient</td>
+</tr>
+<tr>
+<td>Bcc:</td>
+<td>address of blind carbon copy</td>
+</tr>
+<tr>
+<td>From:</td>
+<td>Person who created message</td>
+</tr>
+<tr>
+<td>Sender:</td>
+<td>address of sender</td>
+</tr>
+<tr>
+<td>Received:</td>
+<td>line added by transfer agents along route</td>
+</tr>
+<tr>
+<td>Return-Path:</td>
+<td>Used to identify path back to sender</td>
+</tr>
+</tbody>
+</table>
+<h5 class="mume-header" id="_span-classtexttealuser-agentsspan_"><em><span class="textTeal">user agents</span></em></h5>
+
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date:</td>
+<td>Date and time the message was sent</td>
+</tr>
+<tr>
+<td>Reply-To:</td>
+<td>address where replies should be sent</td>
+</tr>
+<tr>
+<td>Message-Id:</td>
+<td>Unique number for message</td>
+</tr>
+<tr>
+<td>In-Reply-To:</td>
+<td><code>Message-Id</code> of message to which this is a reply</td>
+</tr>
+<tr>
+<td>References:</td>
+<td>Other relevant <code>Message-Id</code>s</td>
+</tr>
+<tr>
+<td>Keywords:</td>
+<td>User-chosen keywords</td>
+</tr>
+<tr>
+<td>Subject:</td>
+<td>Short summary of message for one-line display</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always; break-after: page;"></div>
+<p>ESMTP Example:</p>
+<pre data-role="codeBlock" data-info="plain {.line-numbers}" class="language-plain line-numbers">220 my.fit.edu ESMTP
+EHLO gbutler2020
+250-my.fit.edu
+MAIL FROM:&lt;gbutler2020@my.fit.edu&gt;
+250 2.1.0 Ok
+RCPT TO:&lt;tzars2019@my.fit.edu&gt;
+250 2.1.5 Ok
+DATA
+354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;
+Date: Tue, 19 Jan 2016 18:00:38 -0500 (EST)
+From: worker0-0@mail0.company.com0
+To: worker2-2@mail0.company.com0
+Message-ID: &lt;1338576172.94.1453244438408@worker0-0&gt; Subject: Requirements
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii Content-Transfer-Encoding: 7bit
+
+Words words words.
+.  &lt;------------------------------- indicates end of text
+250 2.0.0 Ok: queued as 5BE21209C5
+QUIT
+221 2.0.0 Bye
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="multipurpose-internet-mail-extensions-span-classtextpurplemimespan">Multipurpose Internet Mail Extensions (<span class="textPurple">MIME</span>)</h4>
+
+<p>Encodes binary data into the range of ASCII characters</p>
+<ul>
+<li>allows attatchments and images</li>
+<li><strong>doesn&apos;t</strong> change text based nature of email</li>
+</ul>
+<h5 class="mume-header" id="mime-consists-of-three-components">MIME consists of three components:</h5>
+
+<ol>
+<li>a set of header lines used to extend <em><span class="textPink">RFC 822</span></em></li>
+</ol>
+<ul>
+<li><code>MIME-Version</code>: version of MIME being used</li>
+<li><code>Content-Description</code>: what is in the message</li>
+<li><code>Content-Type</code>: type of data</li>
+<li><code>Content-Id</code>: a unique id for content</li>
+<li><code>Content-Transfer-Encoding</code>: how data is encoded</li>
+</ul>
+<ol start="2">
+<li>definitions for <em>content types</em></li>
+</ol>
+<ul>
+<li>MIME defines image types: <strong>image/gif</strong> and <strong>image/jpeg</strong> for both types</li>
+</ul>
+<ol start="3">
+<li>a way to <em>encode</em> various data types to include in an ASCII email message</li>
+</ol>
+<h6 class="mume-header" id="mime-supported-data-types">MIME supported data types</h6>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Subtype Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>plain, html, xml, css</td>
+</tr>
+<tr>
+<td>image</td>
+<td>gif, jpeg, tiff</td>
+</tr>
+<tr>
+<td>audio</td>
+<td>basic, mpeg, mp3</td>
+</tr>
+<tr>
+<td>video</td>
+<td>mpeg, mp4, quicktime</td>
+</tr>
+<tr>
+<td>model</td>
+<td>vrml</td>
+</tr>
+<tr>
+<td>application</td>
+<td>octet-stream, pdf, javascipt, zip</td>
+</tr>
+<tr>
+<td>message</td>
+<td>http, rfc822</td>
+</tr>
+<tr>
+<td>multipart</td>
+<td>mixed, alternative, parallel, digest</td>
+</tr>
+</tbody>
+</table>
+<p>Example MIME message:</p>
+<pre data-role="codeBlock" data-info="plain" class="language-plain">From: Some One &lt;someone@example.com&gt;
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+        boundary=&quot;XXXXboundary text&quot;
+
+This is a multipart message in MIME format.
+
+--XXXXboundary text
+Content-Type: text/plain
+
+this is the body text
+
+--XXXXboundary text
+Content-Type: text/plain;
+Content-Disposition: attachment;
+        filename=&quot;test.txt&quot;
+
+this is the attachment text
+
+--XXXXboundary text--
+</pre><h6 class="mume-header" id="purpose-of-mime">Purpose of MIME</h6>
+
+<ul>
+<li>created for non-text data in text-only emails</li>
+<li>SMIME extends MIME, providing encryption and signing of documents</li>
+</ul>
+<h6 class="mume-header" id="application-of-mime">Application of MIME</h6>
+
+<ul>
+<li>SMTP expects ASCII, so <span class="textPurple">MIME</span> encodes to BASE64 to look like ASCII
+<ul>
+<li>Encoding methos can be specified in MIME</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="smtp-simple-mail-transfer-protocol">SMTP (Simple Mail Transfer Protocol)</h4>
+
+<p>Moves email between servers (Transfer Agents) to deliver to a user&apos;s local email server</p>
+<ul>
+<li>Done over TCP, providing reliable delivery</li>
+<li>Not usually used to deliver directly to a user&apos;s computer, several other user agents do that</li>
+<li>A program running (as a daemon) on the email server handles the transfers, called <em>Message Transfer Agent</em> (MTA)</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h3 class="mume-header" id="compression">Compression</h3>
+
+<p>The purpose of compression is to reduce bandwidth for data transfer.</p>
+<h5 class="mume-header" id="applications-1">Applications</h5>
+
+<ul>
+<li>Lossy: data is discarded to reduce the size, sometimes with less noticeable parts
+<ul>
+<li>algorithms will allow for a variable amount of detail to be lost</li>
+<li><em>e.g.</em>: jpeg</li>
+</ul>
+</li>
+<li>Lossless: compressed data contains all original data
+<ul>
+<li>necessary for code, data, executables, and other sources that require original data</li>
+<li>typically done with Lempel-Ziv algorithm</li>
+</ul>
+</li>
+<li>applications are typically centered around video/audio/image transfer</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h2 class="mume-header" id="cryptography">Cryptography</h2>
+
+<h4 class="mume-header" id="terminology">Terminology</h4>
+
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plaintext</td>
+<td>original message (sequence of characters/bytes)</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mo>&lt;</mo><msub><mi>p</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>p</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>p</mi><mi>n</mi></msub><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">P = &lt;p_1, p_2, ..., p_n&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span></span></span></span></td>
+</tr>
+<tr>
+<td>ciphertext</td>
+<td>encrypted version of plaintext</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mo>&lt;</mo><msub><mi>c</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>c</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>c</mi><mi>n</mi></msub><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">C = &lt;c_1, c_2, ..., c_n&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span></span></span></span></td>
+</tr>
+<tr>
+<td>encryption/decryption algorithms</td>
+<td>steps to go between plaintext and ciphertext</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>E</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C = E(P)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span>,  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mi>D</mi><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P = D(C)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mclose">)</span></span></span></span> | E &#x2192; encryption, D &#x2192; decryption</td>
+</tr>
+<tr>
+<td>key</td>
+<td>information or device used to encrypt/decrypt</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></td>
+</tr>
+<tr>
+<td>symmetric encryption</td>
+<td>the same key is used for encryption and decryption</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>E</mi><mo stretchy="false">(</mo><mi>K</mi><mo separator="true">,</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C = E(K, P)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span>,  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mi>D</mi><mo stretchy="false">(</mo><mi>K</mi><mo separator="true">,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P = D(K, C)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td>assymetric encryption</td>
+<td>different keys used for encryption and deceryption</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>E</mi><mo stretchy="false">(</mo><msub><mi>K</mi><mi>E</mi></msub><mo separator="true">,</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C = E(K_E, P)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mi>D</mi><mo stretchy="false">(</mo><msub><mi>K</mi><mi>D</mi></msub><mo separator="true">,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P = D(K_D, C)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="symmetric-and-asymmetric-encryption">Symmetric and Asymmetric Encryption</h3>
+
+<div class="leftColumn">
+<h4>Symmetric</h4>
+<ul>
+<li>Same key is used for encryptiona <strong>and</strong> decryption</li>
+<li>Advantages:
+<ul>
+<li>fast</li>
+<li>keys are smaller</li>
+</ul>
+</li>
+<li>Disadvantages:
+<ul>
+<li>less secure</li>
+<li>key must be protected from access by others</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="rightColumn">
+<h4>Asymmetric</h4>
+<ul>
+<li>Different keys used for encryption and decryption</li>
+<li>Advantages:
+<ul>
+<li>provides confidentiality and integrity</li>
+</ul>
+</li>
+<li>Disadvantages
+<ul>
+<li>poor performance compared to symmetric&apos;s single key</li>
+</ul>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always; break-after: page;"></div>
+<h3 class="mume-header" id="how-encryption-works">How Encryption Works</h3>
+
+<h5 class="mume-header" id="symmetric">Symmetric</h5>
+
+<p>Public key provides a solution. Sender S and receiver R both have public keys. KX is symmetric key we want to exchange.</p>
+<ol>
+<li>S wants to send KX to R</li>
+<li>S encrypts KX with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><msub><mi>K</mi><msub><mi>S</mi><mrow><mi>p</mi><mi>r</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow></msub></msub><mo separator="true">,</mo><mi>K</mi><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(K_{S_{private}}, KX)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0973em;vertical-align:-0.3473em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.0576em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3473em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span></li>
+<li>S encrypte using R&apos;s public key &#x2192; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><msub><mi>K</mi><msub><mi>R</mi><mrow><mi>p</mi><mi>u</mi><mi>b</mi><mi>l</mi><mi>i</mi><mi>c</mi></mrow></msub></msub><mo separator="true">,</mo><mi>E</mi><mo stretchy="false">(</mo><msub><mi>K</mi><msub><mi>S</mi><mrow><mi>p</mi><mi>r</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow></msub></msub><mo separator="true">,</mo><mi>K</mi><mi>X</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(K_{R_{public}}, E(K_{S_{private}}, KX))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1031em;vertical-align:-0.3531em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0077em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3531em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.0576em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3473em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">))</span></span></span></span></li>
+<li>R uses <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><msub><mi>R</mi><mrow><mi>p</mi><mi>r</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow></msub></msub></mrow><annotation encoding="application/x-tex">K_{R_{private}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0307em;vertical-align:-0.3473em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.0077em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3473em;"><span></span></span></span></span></span></span></span></span></span> to decrypt the outer layer, then uses <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><msub><mi>S</mi><mrow><mi>p</mi><mi>u</mi><mi>b</mi><mi>l</mi><mi>i</mi><mi>c</mi></mrow></msub></msub></mrow><annotation encoding="application/x-tex">K_{S_{public}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0364em;vertical-align:-0.3531em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0576em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">c</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3531em;"><span></span></span></span></span></span></span></span></span></span> to decrypt inner layer</li>
+</ol>
+<ul>
+<li>Note that only S could send KX, and only R could read it.</li>
+</ul>
+<h3 class="mume-header" id="single-sign-on-sso">Single Sign On (SSO)</h3>
+
+<p>A process that allows a user to log into a central authority and access other sites and services for which they have credentials for.</p>
+<h5 class="mume-header" id="benefits">Benefits</h5>
+
+<ul>
+<li>Fewer username and password combinations for users to remember and manage, reducing risks to privacy and security</li>
+<li>More convenient for users who frequently access multiple machines/systems</li>
+<li>Supports centralized management of password compliance and reporting by IT</li>
+</ul>
+<h3 class="mume-header" id="cryptographic-hash-functions">Cryptographic Hash Functions</h3>
+
+<p>A function that provides an apparently random output for the same input.</p>
+<ul>
+<li>provides security and diffusion, avoids collisions
+<ul>
+<li>Not every hash function is a <em>cryptographic</em> hash function, but every cryptographic hash function is a hash function</li>
+</ul>
+</li>
+</ul>
+<p>A good <em>cryptgraphic</em> hash function should not allow:</p>
+<ul>
+<li>finding a message with a given hash</li>
+<li>modification of a message without changing the hash</li>
+<li>finding two messages with the same hash</li>
+</ul>
+<p>Hashes are used to verify integrity in Software Distribution</p>
+<div style="page-break-after: always; break-after: page;"></div>
+<h2 class="mume-header" id="secure-communications">Secure Communications</h2>
+
+<h3 class="mume-header" id="network-encryption">Network Encryption</h3>
+
+<h4 class="mume-header" id="link-encryption">Link Encryption</h4>
+
+<ul>
+<li>at lowest network layers</li>
+<li>encrypts Ethernet payload, but not the header</li>
+<li>encryption across direct links between nodes</li>
+<li>requires compatible hardware at each end</li>
+<li>key shared by network interfaces at nodes</li>
+</ul>
+<h6 class="mume-header" id="benefits-1">Benefits</h6>
+
+<ul>
+<li>Data is encrypted in transit</li>
+<li>Hardware does encryption/decryption</li>
+</ul>
+<h6 class="mume-header" id="limits">Limits</h6>
+
+<ul>
+<li>Data is not encrypted on hosts, only in transit</li>
+</ul>
+<h4 class="mume-header" id="end-to-end">End to End</h4>
+
+<ul>
+<li>at higher network layers</li>
+<li>only data is encrypted, but routing is unaffected</li>
+<li>application encrypts, while the network transmits</li>
+<li>users/applications control keys</li>
+</ul>
+<h6 class="mume-header" id="benefits-2">Benefits</h6>
+
+<ul>
+<li>Each applications handles its own encryption/decryption</li>
+<li>Data is encrypted while in transit and while on hosts.</li>
+</ul>
+<h6 class="mume-header" id="limits-1">Limits</h6>
+
+<ul>
+<li>Only applications that can encrypt will protect their data.</li>
+<li>Client and server must share a key.</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="vpn">VPN</h4>
+
+<ul>
+<li>connects to a remote computer to a secure network by creating an encrypted tunnel</li>
+<li>remote host must be authenticated by the secure network</li>
+<li>protects data in transit to/from network</li>
+<li>applications on host send data through tunnel, but don&apos;t have to add encryption</li>
+</ul>
+<h6 class="mume-header" id="benefits-3">Benefits</h6>
+
+<ul>
+<li>VPN software and/or hardware handles encryption/decryption at endpoints</li>
+<li>applications don&apos;t have to provide encryption keys</li>
+<li>data is encrypted aloing entire path from client to server</li>
+</ul>
+<h6 class="mume-header" id="limits-2">Limits</h6>
+
+<ul>
+<li>VPNs lamost always slow connection speed</li>
+<li>all traffic goes through the tunnel</li>
+</ul>
+<h4 class="mume-header" id="ssh-secure-shell">SSH (Secure Shell)</h4>
+
+<p>The Secure Shell (SSH) protocol was developed to provide a secure remote login service by creating encrypted connections before transeferring any data or commands.</p>
+<ul>
+<li>SSH can be used to create a secure tunnel between hosts</li>
+<li>replaced by telnet and rlogin</li>
+</ul>
+<h4 class="mume-header" id="ssl-secure-sockets-layer">SSL (Secure Sockets Layer)</h4>
+
+<p>SSL supports secure end-toend network connections for TCP applications</p>
+<ul>
+<li>first used in the Netscape browser in 1995</li>
+<li>updated over time to fix flaws and vulnerabilities</li>
+<li>SSL provides a layer between the application and the TCP layer, encrypting all data in the TCP packet using a shared session key</li>
+<li>the approach the protocol was based on was good, but it relied on obsolete or vulnerable components (e.g., MD5 and SHA-1)</li>
+<li>replaced by the Transport Layer Security (TLS) protocol in the 2000&#x2019;s and deprecated in 2015</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="tls-transport-layer-security">TLS (Transport Layer Security)</h4>
+
+<p>Widely deployed security protocol above transport layer</p>
+<ul>
+<li>supported by browsers, web servers, etc.</li>
+</ul>
+<h6 class="mume-header" id="provides">Provides:</h6>
+
+<ul>
+<li>authentication established by public key certificates</li>
+<li>confidentiality through shared session key exchanged during configuration stage</li>
+<li>integrity through cryptographic hash values included with messages</li>
+</ul>
+<h6 class="mume-header" id="built-on">Built on:</h6>
+
+<ul>
+<li>handshake: Alice, Bob use public key certificated and share private keys to authenticate each other and exchange/create shared secret key</li>
+<li>key derivation: Alice, Bob use shared secret to derive session keys</li>
+<li>data transfer: stream data transfer, data is seen as series of records, not just one-time transactions</li>
+<li>connection closure: special messages are used to securely close the connection</li>
+</ul>
+<p>TLS provides an Application Programming Interface (API) that any application can use (added to HTTP)</p>
+<div style="page-break-after: always; break-after: page;"></div>
+<h2 class="mume-header" id="network-security">Network Security</h2>
+
+<h3 class="mume-header" id="network-recon">Network Recon</h3>
+
+<p>Checks what app is running and if it is vulnerable</p>
+<ul>
+<li>port scans discover active applications
+<ul>
+<li>checks if the applications are vulnerable to an attack</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="osapplication-fingerprinting">OS/Application Fingerprinting</h4>
+
+<ul>
+<li>looks for identifying characteristics</li>
+<li>find vulnerable OS or apps before attacking</li>
+<li>protocol specifications are interpreted by OS designers and each OS may respond slightly differently to requests</li>
+<li>using those differences, we can find out which OS is running</li>
+</ul>
+<p>Details and specifications are found in published documentation</p>
+<ul>
+<li>bug reports, source code, RFCs</li>
+</ul>
+<h3 class="mume-header" id="firewalls">Firewalls</h3>
+
+<h6 class="mume-header" id="general-information">General Information</h6>
+
+<ul>
+<li>isolate organizations internal network from internet, allowing some packets to pass and blocking others</li>
+<li>firewall sits between internal network and internet, examining packets and makes decisions about forwarding or dropping packets based on:
+<ul>
+<li>source or destination IP address</li>
+<li>application (port #), protocol (TCP/UDP)</li>
+<li>contents of one or more packets</li>
+<li>known malicious traffic or behaviors</li>
+</ul>
+</li>
+<li>firewall based network security depends on the firewall being the <strong>only</strong> path into the local network from outside
+<ul>
+<li>there should be no way to bypass the firewall via another gateway or wireless connection</li>
+</ul>
+</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h6 class="mume-header" id="purpose">Purpose</h6>
+
+<ul>
+<li>prevent denial of service attacks:
+<ul>
+<li>SYN flooding: attacker establishes many bogus TCP connections, so no resources are left for &apos;real&apos; connections</li>
+</ul>
+</li>
+<li>prevent illegal modification/access of internal data
+<ul>
+<li><em>e.g.</em>: attacker compromises company database and downloads/modifies private data</li>
+</ul>
+</li>
+<li>allow only authorized access to the network
+<ul>
+<li>pre-determined authenticated users/hosts</li>
+</ul>
+</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h6 class="mume-header" id="three-types-of-firewalls">Three Types of Firewalls</h6>
+
+<ol>
+<li>stateless packet filters</li>
+</ol>
+<ul>
+<li>firewall decides whether a packet should proceed
+<ul>
+<li>decision is made on per-packet basis</li>
+</ul>
+</li>
+<li>uses packet header for inspection</li>
+<li>filtering rules based on binary pattern-matching</li>
+</ul>
+<ol start="2">
+<li>stateful packet filters</li>
+</ol>
+<ul>
+<li>based on context of connection
+<ul>
+<li>if it is a new connection, then check against security policy</li>
+<li>if existing, look it up in state transition table and update table if necessary
+<ul>
+<li><em>e.g</em>: only allow incoming traffic to high-numbered port if there is an established connection</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Challenges: UDP and ICMP</li>
+<li>default filter denies everything not explicitly permitted</li>
+<li>filtering rules (ACL) have same format as stateless filtering
+<ul>
+<li>filters can be bypassed with a VPN</li>
+</ul>
+</li>
+<li>application gateways
+<ul>
+<li>filter packets on type of application data
+<ul>
+<li>also specific IP addresses or TCP, UDP ports</li>
+</ul>
+</li>
+<li><em>e.g.</em>: allow select internal users to sftp to outside network</li>
+</ul>
+</li>
+</ul>
+<h6 class="mume-header" id="limitations">Limitations:</h6>
+
+<ul>
+<li>IP spoofing, when a firewall doesn&apos;t know the data <em>really</em> comes from claimed source</li>
+<li>Doesn&apos;t prevent application-specific attacks
+<ul>
+<li>no payload inspection</li>
+<li><em>e.g.</em>: firewall will not block an attack string with URL buffer overflow</li>
+</ul>
+</li>
+<li>cannot determine if:
+<ul>
+<li>user has been compromised and will continue to pass that user&apos;s traffic</li>
+<li>a machine is being used to pass information in/out of the network for malicious purposes
+<ul>
+<li>outgoing connections are usually allowed</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="page-break-after: always; break-after: page;"></div>
+<h2 class="mume-header" id="ip-packet-information">IP Packet Information</h2>
+
+<h3 class="mume-header" id="header-fields-1">Header Fields</h3>
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size (bits)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>4</td>
+<td>most often v4</td>
+</tr>
+<tr>
+<td>HLen</td>
+<td>4</td>
+<td>number of 32-bit words in header</td>
+</tr>
+<tr>
+<td>TOS</td>
+<td>8</td>
+<td>type of service (not widely used)</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>16</td>
+<td>number of bytes in datagram</td>
+</tr>
+<tr>
+<td>Ident</td>
+<td>16</td>
+<td>support for fragmentation</td>
+</tr>
+<tr>
+<td>Flags/Offset</td>
+<td>16</td>
+<td>^^^^^^^^^</td>
+</tr>
+<tr>
+<td>TTL</td>
+<td>8</td>
+<td>number of hops this datagram has travelled</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>8</td>
+<td>demultiplex key (TCP=6, UDP=17)</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>16</td>
+<td>for header only</td>
+</tr>
+<tr>
+<td>SrcAffr</td>
+<td>32</td>
+<td>source address</td>
+</tr>
+<tr>
+<td>DestAddr</td>
+<td>32</td>
+<td>destination address</td>
+</tr>
+<tr>
+<td>Options</td>
+<td>variable</td>
+<td></td>
+</tr>
+<tr>
+<td>Pad</td>
+<td>variable</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always; break-after: page;"></div>
+<h4 class="mume-header" id="ip-header-fields-explained">IP Header Fields Explained</h4>
+
+<h6 class="mume-header" id="version">Version</h6>
+
+<p>all IPv4 packets have value <code>0x4</code> (<code>0100</code>)</p>
+<p>What are the two active version of the Internet Protocol (IP)?</p>
+<ul>
+<li>IPv4 and IPv6</li>
+</ul>
+<h6 class="mume-header" id="ttl">TTL</h6>
+
+<p>number of hops this datagram can pass through (prevents infinite loops)</p>
+<p>What is the purpose?</p>
+<ul>
+<li>To prevent infinite loops by defining how many hops the datagram can pass through.</li>
+</ul>
+<h6 class="mume-header" id="source-address">Source Address</h6>
+
+<p>How many bits in the IP header are allocated for this field?</p>
+<ul>
+<li>32 bits</li>
+</ul>
+<h6 class="mume-header" id="hlen">HLen</h6>
+
+<p>This field shows the number of <em>4-byte words</em> the header uses. Default is <code>0x5</code> (<code>0101</code>) because default header is 20 bytes.</p>
+<blockquote>
+<p><code>0x5 * 4 bytes</code></p>
+</blockquote>
+<p>How large (in bytes) is the header of a packet when the value in this field is 0x6?</p>
+<blockquote>
+<p><code>0x6 * 4 bytes = 24 bytes</code></p>
+</blockquote>
+<h6 class="mume-header" id="checksum">Checksum</h6>
+
+<p>What areas of an IP datagram are included when the checksum is calculated?</p>
+<ul>
+<li>only the header of the IP datagram</li>
+</ul>
+<h6 class="mume-header" id="length">Length</h6>
+
+<p>What is the maximum length of an IP packet (in bytes)?</p>
+<ul>
+<li>minimum of 20, maximum of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>1</mn></msup><mn>6</mn><mo>=</mo><mn>65</mn><mo separator="true">,</mo><mn>535</mn></mrow><annotation encoding="application/x-tex">2^16 = 65,535</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">65</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">535</span></span></span></span> bytes.</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
