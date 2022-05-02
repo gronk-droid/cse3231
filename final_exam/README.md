@@ -10,7 +10,7 @@
 <!---
 Table Of Contents
 --->
-<div class="center">
+<!-- <div class="center">
 
 # Table of Contents
 </div>
@@ -20,14 +20,14 @@ Table Of Contents
 [Transport Layer](#tl1)
 
 
-<div style="page-break-after: always; break-after: page;"></div>
+<div style="page-break-after: always; break-after: page;"></div> -->
 
 <div style="text-align: center;">
 
 ## Transport Layer
 </div>
 
-### <a id="tl1">UDP and TCP</a>
+### UDP and TCP
 Differences:
 
 <div class="leftColumn">
@@ -613,6 +613,8 @@ email message header is lines of text terminated by _CarriageReturnLineFeed_ (CR
 - header is separated from message by a blank line
 - _<span class="textPink">RFC 822</span>_ was extended by <span class="textPurple">MIME</span> to allow different types of data
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 ##### Header Fields
 ###### _<span class="textTeal">message transport</span>_
 |    Header    |                  Meaning                  |
@@ -635,6 +637,8 @@ email message header is lines of text terminated by _CarriageReturnLineFeed_ (CR
 | References:  |           Other relevant `Message-Id`s           |
 |  Keywords:   |               User-chosen keywords               |
 |   Subject:   |  Short summary of message for one-line display   |
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 ESMTP Example:
 ```plain {.line-numbers}
@@ -660,6 +664,8 @@ Words words words.
 QUIT
 221 2.0.0 Bye
 ```
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 #### Multipurpose Internet Mail Extensions (<span class="textPurple">MIME</span>)
 Encodes binary data into the range of ASCII characters
@@ -729,6 +735,8 @@ Moves email between servers (Transfer Agents) to deliver to a user's local email
 - Not usually used to deliver directly to a user's computer, several other user agents do that
 - A program running (as a daemon) on the email server handles the transfers, called _Message Transfer Agent_ (MTA)
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 ### Compression
 The purpose of compression is to reduce bandwidth for data transfer.
 
@@ -740,6 +748,8 @@ The purpose of compression is to reduce bandwidth for data transfer.
   - necessary for code, data, executables, and other sources that require original data
   - typically done with Lempel-Ziv algorithm
 - applications are typically centered around video/audio/image transfer
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 ## Cryptography
 
@@ -777,4 +787,241 @@ The purpose of compression is to reduce bandwidth for data transfer.
   - poor performance compared to symmetric's single key
 </div>
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 ### How Encryption Works
+##### Symmetric
+Public key provides a solution. Sender S and receiver R both have public keys. KX is symmetric key we want to exchange.
+1. S wants to send KX to R
+2. S encrypts KX with $E(K_{S_{private}}, KX)$
+3. S encrypte using R's public key → $E(K_{R_{public}}, E(K_{S_{private}}, KX))$
+4. R uses $K_{R_{private}}$ to decrypt the outer layer, then uses $K_{S_{public}}$ to decrypt inner layer
+- Note that only S could send KX, and only R could read it.
+
+### Single Sign On (SSO)
+A process that allows a user to log into a central authority and access other sites and services for which they have credentials for.
+
+##### Benefits
+- Fewer username and password combinations for users to remember and manage, reducing risks to privacy and security
+- More convenient for users who frequently access multiple machines/systems
+- Supports centralized management of password compliance and reporting by IT
+
+### Cryptographic Hash Functions
+A function that provides an apparently random output for the same input.
+- provides security and diffusion, avoids collisions
+  - Not every hash function is a _cryptographic_ hash function, but every cryptographic hash function is a hash function
+
+A good _cryptgraphic_ hash function should not allow:
+- finding a message with a given hash
+- modification of a message without changing the hash
+- finding two messages with the same hash
+
+Hashes are used to verify integrity in Software Distribution
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+## Secure Communications
+### Network Encryption
+
+#### Link Encryption
+- at lowest network layers
+- encrypts Ethernet payload, but not the header
+- encryption across direct links between nodes
+- requires compatible hardware at each end
+- key shared by network interfaces at nodes
+
+###### Benefits
+- Data is encrypted in transit
+- Hardware does encryption/decryption
+
+###### Limits
+- Data is not encrypted on hosts, only in transit
+
+#### End to End
+- at higher network layers
+- only data is encrypted, but routing is unaffected
+- application encrypts, while the network transmits
+- users/applications control keys
+
+###### Benefits
+- Each applications handles its own encryption/decryption
+- Data is encrypted while in transit and while on hosts.
+
+###### Limits
+- Only applications that can encrypt will protect their data.
+- Client and server must share a key.
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+#### VPN
+- connects to a remote computer to a secure network by creating an encrypted tunnel
+- remote host must be authenticated by the secure network
+- protects data in transit to/from network
+- applications on host send data through tunnel, but don't have to add encryption
+
+###### Benefits
+- VPN software and/or hardware handles encryption/decryption at endpoints
+- applications don't have to provide encryption keys
+- data is encrypted aloing entire path from client to server
+
+###### Limits
+- VPNs lamost always slow connection speed
+- all traffic goes through the tunnel
+
+#### SSH (Secure Shell)
+The Secure Shell (SSH) protocol was developed to provide a secure remote login service by creating encrypted connections before transeferring any data or commands.
+- SSH can be used to create a secure tunnel between hosts
+- replaced by telnet and rlogin
+
+#### SSL (Secure Sockets Layer)
+SSL supports secure end-toend network connections for TCP applications
+- first used in the Netscape browser in 1995
+- updated over time to fix flaws and vulnerabilities
+- SSL provides a layer between the application and the TCP layer, encrypting all data in the TCP packet using a shared session key
+- the approach the protocol was based on was good, but it relied on obsolete or vulnerable components (e.g., MD5 and SHA-1)
+- replaced by the Transport Layer Security (TLS) protocol in the 2000’s and deprecated in 2015
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+#### TLS (Transport Layer Security)
+Widely deployed security protocol above transport layer
+- supported by browsers, web servers, etc.
+
+###### Provides:
+- authentication established by public key certificates
+- confidentiality through shared session key exchanged during configuration stage
+- integrity through cryptographic hash values included with messages
+
+###### Built on:
+- handshake: Alice, Bob use public key certificated and share private keys to authenticate each other and exchange/create shared secret key
+- key derivation: Alice, Bob use shared secret to derive session keys
+- data transfer: stream data transfer, data is seen as series of records, not just one-time transactions
+- connection closure: special messages are used to securely close the connection
+
+TLS provides an Application Programming Interface (API) that any application can use (added to HTTP)
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+## Network Security
+### Network Recon
+
+Checks what app is running and if it is vulnerable
+- port scans discover active applications
+  - checks if the applications are vulnerable to an attack
+
+#### OS/Application Fingerprinting
+- looks for identifying characteristics
+- find vulnerable OS or apps before attacking
+- protocol specifications are interpreted by OS designers and each OS may respond slightly differently to requests
+- using those differences, we can find out which OS is running
+
+Details and specifications are found in published documentation
+- bug reports, source code, RFCs
+
+### Firewalls
+###### General Information
+- isolate organizations internal network from internet, allowing some packets to pass and blocking others
+- firewall sits between internal network and internet, examining packets and makes decisions about forwarding or dropping packets based on:
+  - source or destination IP address
+  - application (port #), protocol (TCP/UDP)
+  - contents of one or more packets
+  - known malicious traffic or behaviors
+- firewall based network security depends on the firewall being the **only** path into the local network from outside
+  - there should be no way to bypass the firewall via another gateway or wireless connection
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+###### Purpose
+- prevent denial of service attacks:
+  - SYN flooding: attacker establishes many bogus TCP connections, so no resources are left for 'real' connections
+- prevent illegal modification/access of internal data
+  - _e.g._: attacker compromises company database and downloads/modifies private data
+- allow only authorized access to the network
+  - pre-determined authenticated users/hosts
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+###### Three Types of Firewalls
+1. stateless packet filters
+- firewall decides whether a packet should proceed
+  - decision is made on per-packet basis
+- uses packet header for inspection
+- filtering rules based on binary pattern-matching
+
+2. stateful packet filters
+- based on context of connection
+  - if it is a new connection, then check against security policy
+  - if existing, look it up in state transition table and update table if necessary
+    - _e.g_: only allow incoming traffic to high-numbered port if there is an established connection
+- Challenges: UDP and ICMP
+- default filter denies everything not explicitly permitted
+- filtering rules (ACL) have same format as stateless filtering
+  - filters can be bypassed with a VPN
+- application gateways
+  - filter packets on type of application data
+    - also specific IP addresses or TCP, UDP ports
+  - _e.g._: allow select internal users to sftp to outside network
+
+###### Limitations:
+- IP spoofing, when a firewall doesn't know the data _really_ comes from claimed source
+- Doesn't prevent application-specific attacks
+  - no payload inspection
+  - _e.g._: firewall will not block an attack string with URL buffer overflow
+- cannot determine if:
+  - user has been compromised and will continue to pass that user's traffic
+  - a machine is being used to pass information in/out of the network for malicious purposes
+    - outgoing connections are usually allowed
+
+
+<div style="page-break-after: always; break-after: page;"></div>
+
+## IP Packet Information
+### Header Fields
+| Field        | Size (bits) | Description                                |
+| ------------ | ----------- | ------------------------------------------ |
+| Version      | 4           | most often v4                              |
+| HLen         | 4           | number of 32-bit words in header           |
+| TOS          | 8           | type of service (not widely used)          |
+| Length       | 16          | number of bytes in datagram                |
+| Ident        | 16          | support for fragmentation                  |
+| Flags/Offset | 16          | ^^^^^^^^^                                  |
+| TTL          | 8           | number of hops this datagram has travelled |
+| Protocol     | 8           | demultiplex key (TCP=6, UDP=17)            |
+| Checksum     | 16          | for header only                            |
+| SrcAffr      | 32          | source address                             |
+| DestAddr     | 32          | destination address                        |
+| Options      | variable    |                                            |
+| Pad          | variable    |                                            |
+
+#### IP Header Fields Explained
+
+###### Version
+all IPv4 packets have value `0x4` (`0100`)
+
+What are the two active version of the Internet Protocol (IP)?
+- IPv4 and IPv6
+
+###### TTL
+number of hops this datagram can pass through (prevents infinite loops)
+
+What is the purpose?
+- To prevent infinite loops by defining how many hops the datagram can pass through.
+
+###### Source Address
+How many bits in the IP header are allocated for this field?
+- 32 bits
+
+###### HLen
+This field shows the number of _4-byte words_ the header uses. Default is `0x5` (`0101`) because default header is 20 bytes.
+> `0x5 * 4 bytes`
+
+How large (in bytes) is the header of a packet when the value in this field is 0x6?
+> `0x6 * 4 bytes = 24 bytes`
+
+###### Checksum
+What areas of an IP datagram are included when the checksum is calculated?
+- only the header of the IP datagram
+
+###### Length
+What is the maximum length of an IP packet (in bytes)?
+- minimum of 20, maximum of $2^16 = 65,535$ bytes.
