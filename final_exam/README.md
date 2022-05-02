@@ -728,3 +728,53 @@ Moves email between servers (Transfer Agents) to deliver to a user's local email
 - Done over TCP, providing reliable delivery
 - Not usually used to deliver directly to a user's computer, several other user agents do that
 - A program running (as a daemon) on the email server handles the transfers, called _Message Transfer Agent_ (MTA)
+
+### Compression
+The purpose of compression is to reduce bandwidth for data transfer.
+
+##### Applications
+- Lossy: data is discarded to reduce the size, sometimes with less noticeable parts
+  - algorithms will allow for a variable amount of detail to be lost
+  - _e.g._: jpeg
+- Lossless: compressed data contains all original data
+  - necessary for code, data, executables, and other sources that require original data
+  - typically done with Lempel-Ziv algorithm
+- applications are typically centered around video/audio/image transfer
+
+## Cryptography
+
+#### Terminology
+|               Term               |                     Definition                     |                          Symbol                           |
+| -------------------------------- | -------------------------------------------------- | --------------------------------------------------------- |
+|            plaintext             |  original message (sequence of characters/bytes)   |                $P = <p_1, p_2, ..., p_n>$                 |
+|            ciphertext            |           encrypted version of plaintext           |                $C = <c_1, c_2, ..., c_n>$                 |
+| encryption/decryption algorithms |    steps to go between plaintext and ciphertext    | $C = E(P)$,  $P = D(C)$ \| E → encryption, D → decryption |
+|               key                |   information or device used to encrypt/decrypt    |                            $K$                            |
+|       symmetric encryption       | the same key is used for encryption and decryption |               $C = E(K, P)$,  $P = D(K, C)$               |
+|      assymetric encryption       | different keys used for encryption and deceryption |             $C = E(K_E, P)$, $P = D(K_D, C)$              |
+
+### Symmetric and Asymmetric Encryption
+
+<div class="leftColumn">
+
+#### Symmetric
+- Same key is used for encryptiona **and** decryption
+- Advantages:
+  - fast
+  - keys are smaller
+- Disadvantages:
+  - less secure
+  - key must be protected from access by others
+</div>
+
+<div class="rightColumn">
+
+#### Asymmetric
+- Different keys used for encryption and decryption
+- Advantages:
+  - provides confidentiality and integrity
+- Disadvantages
+  - poor performance compared to symmetric's single key
+</div>
+
+### How Encryption Works
